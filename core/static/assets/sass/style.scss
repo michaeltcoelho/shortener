@@ -1,0 +1,245 @@
+@import "_mixins.scss";
+
+/*
+    style.scss
+*/
+
+$font: 'Open Sans', sans-serif;
+$first-color: #3498db; // blue
+$second-color: #eee; // gray
+$third-color: #2980b9; // dark blue
+
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+html,
+body {
+    font: {
+        family: $font;
+        size: 100%;
+    }
+    color: #6E6E6E;
+}
+
+a {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+#header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    border-bottom: 2px solid $second-color;
+    padding: 1em;
+
+    .logo {
+        color: $first-color;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+#search {
+    position: relative;
+    margin-top: 2em;
+    background-color: $second-color;
+    @include radius(4px);
+    float: left;
+    display: block;
+    width: 100%;
+}
+
+#search-form {
+    float: left;
+    padding: 1em 1.8em 1em 1em;
+    width: 100%;
+
+    > div {
+        float: left;
+        display: inline-block;
+    }
+
+    > div:first-child
+    {
+        width: 80%;
+
+        > label {
+            font: {
+                size: 16px;
+                weight: bold;
+            }
+        }
+
+        > input {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            @include radius(4px);
+            border: none;
+            margin-top: 10px;
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+
+    > div:last-child {
+        width: 20%;
+
+        button {
+            position: relative;
+            top: 32px;
+            margin-left: 10px;
+            padding: 0.899em;
+            width: 100%;
+        }
+    }
+}
+
+#shortener-content {
+    padding-top: 11%;
+}
+
+/*
+    components
+*/
+
+.menu-list {
+    margin: 0;
+    list-style: none;
+    display: block;
+
+    > li + li {
+        margin-left: 0.5em;
+    }
+
+    > li {
+        display: inline-block;
+        font-family: $font;
+        font-size: 14px;
+
+        a {
+            background-color: $first-color;
+            border-bottom: 3px solid $third-color;
+            text-decoration: none;
+
+            color: #fff;
+            padding: 10px 10px;
+            @include radius(4px);
+
+            &:hover {
+                background-color: $second-color;
+                border-bottom: 3px solid #bdc3c7;
+                color: $first-color;
+            }
+        }
+    }
+}
+
+.btn {
+    background-color: $first-color;
+    border: 1px solid $third-color;
+    border-bottom: 3px solid $third-color;
+    padding: 10px;
+    color: #fff;
+    @include radius(4px);
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:active {
+        border-bottom: 1px solid $third-color;
+    }
+}
+
+.table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+
+    thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-bottom: 2px solid $second-color;
+
+        tr {
+            display: table-row;
+            th {
+                text-align: center;
+                padding: 8px;
+            }
+        }
+    }
+
+    tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        tr {
+            display: table-row;
+            border-bottom: 1px solid $second-color;
+            td {
+                text-align: center;
+                line-height: 1.42857143;
+                padding: 12px;
+            }
+
+            &:hover {
+                background-color: #ffffd3;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .panel {
+        border: 1px solid $first-color;
+    }
+}
+
+/*
+    utils
+*/
+
+.pull-left {
+    float: left !important;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+
+/*
+    responsive
+*/
+
+@media only screen and (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media only screen and (min-width: 1224px) {
+    .container {
+        width: 1170px;
+    }
+}

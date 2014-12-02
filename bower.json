@@ -1,0 +1,17 @@
+{
+  "name": "shortener",
+  "version": "0.0.0",
+  "homepage": "https://github.com/michaeltcoelho/shortener",
+  "authors": [
+    "Michael Coelho <michael.tcoelho@gmail.com>"
+  ],
+  "description": "An url shortener",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "core/static/bower",
+    "test"
+  ]
+}

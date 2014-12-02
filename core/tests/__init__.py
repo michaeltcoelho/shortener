@@ -1,1 +1,1 @@
-__author__ = 'Michael Coelho'
+import core

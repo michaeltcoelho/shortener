@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %}</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <h3 class="logo pull-left">Shortener</h3>
+            <ul class="menu-list pull-right">
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Cadastrar</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="content">
+        <div class="container">
+            <div id="search">
+                <form id="search-form" action="#">
+                    <div>
+                        <label for="url">Cole aqui sua url: </label>
+                        <input type="url" id="url" class="form-control" placeholder="http://"/>
+                    </div>
+                    <div>
+                        <button id="short" class="btn">encurtar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="shortener-content">
+        <div class="container">
+            <div class="panel">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>URL</th>
+                            <th>DATA</th>
+                            <th>URL ENCURTADA</th>
+                            <th>CLICKS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" class="link">www.g1.globo.com</a></td>
+                            <td>Há 22 minutos</td>
+                            <td><a href="#" class="link">goo.gl/SFa45</a></td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="link">www.g1.globo.com</a></td>
+                            <td>Há 22 minutos</td>
+                            <td><a href="#" class="link">goo.gl/SFa45</a></td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="link">www.g1.globo.com</a></td>
+                            <td>Há 22 minutos</td>
+                            <td><a href="#" class="link">goo.gl/SFa45</a></td>
+                            <td>10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="container"> </div>
+    </div>
+
+
+    <!-- scripts-->
+
+    <script type="text/javascript" src="{% static 'bower/jquery/dist/jquery.min.js' %}"></script>
+
+    <!-- scripts -->
+
+</body>
+</html>
