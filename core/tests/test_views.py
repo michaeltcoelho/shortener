@@ -72,3 +72,25 @@ class LoginTest(TestCase):
         form = self.resp.context['form']
         self.assertIsInstance(form, AuthenticationForm)
 
+class ShortenitTest(TestCase):
+    """
+    ShortenitTest -
+    """
+    def test_get(self):
+        """
+        AJAX POST /shortenit should return 200
+        """
+        self.resp = client.post(r('core:shortenit'), { 'url' : 'www.google.com' }, **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'})
+        self.assertEqual(200, self.resp.status_code)
+
+    def test_url_shortened_with_success(self):
+        """
+        """
+        resp = client.post(r('core:shortenit'), { 'url' : 'www.google.com' }, **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'})
+        self.assertContains(resp, 'url')
+
+    def test_url_shortened_with_errors(self):
+        """
+        """
+        resp = client.post(r('core:shortenit'), { 'url' : 'www.googs$%#le.com' }, **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'})
+        self.assertContains(resp, 'Informe uma url válida.')

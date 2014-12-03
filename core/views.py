@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse as r
 from django.contrib import auth
-from .forms import UserCreationForm, AuthenticationForm
+from .forms import UserCreationForm, AuthenticationForm, LinkForm
 from .models import User
+
+import json
 
 def home(request):
     """
@@ -64,3 +66,26 @@ def signup(request,
 
         return render(request, template, { 'form' : form })
     return render(request, template, { 'form' : signup_form() })
+
+
+def shortenit(request,
+              link_form=LinkForm):
+    """
+    shortenit - an ajax view to shorten an url
+    """
+    if request.is_ajax():
+
+        form = link_form(request.POST)
+
+        if form.is_valid():
+            link = form.save()
+            link.user = request.user if request.user.is_authenticated() else None
+            link.save()
+            return HttpResponse({ 'url' : link.get_shortened_url() }, content_type='application/json')
+        return HttpResponse(json.dumps(form.errors), content_type='application/json')
+
+def redirect(request, id):
+    """
+    redirect -
+    """
+    return HttpResponseRedirect(r('core:home'))

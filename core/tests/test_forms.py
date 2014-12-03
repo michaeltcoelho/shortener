@@ -1,8 +1,8 @@
 #encoding:utf-8
 from django.test import TestCase, Client
 from django.core.urlresolvers import reverse as r
-from core.models import User
-from core.forms import UserCreationForm, AuthenticationForm
+from core.models import User, Link
+from core.forms import UserCreationForm, AuthenticationForm, LinkForm
 
 client = Client()
 
@@ -122,3 +122,41 @@ class AuthenticationFormTest(TestCase):
         form.is_valid()
         return form
 
+class LinkFormTest(TestCase):
+    """
+    LinkFormTest
+    """
+    def test_has_fields(self):
+        """
+        LinkForm must have 1 field
+        """
+        form = LinkForm()
+
+        self.assertItemsEqual(['url'], form.fields)
+
+    def test_url_is_required(self):
+        """
+        url field is required
+        """
+        data = { 'url' : '' }
+
+        form = LinkForm(data)
+        self.assertItemsEqual(['url'], form.errors)
+
+    def test_url_is_valid(self):
+        """
+        url must be a valid address
+        """
+        data = { 'url' : 'www.google.com' }
+
+        form = LinkForm(data)
+        self.assertTrue(form.is_valid())
+
+    def test_url_is_invalid(self):
+        """
+        url must be a invalid address
+        """
+        data = { 'url' : 'www.google$%#.com' }
+
+        form = LinkForm(data)
+        self.assertFalse(form.is_valid())

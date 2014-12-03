@@ -1,6 +1,6 @@
 #coding:utf-8
 from django import forms
-from models import User
+from models import Link
 from django.contrib.auth import get_user_model, authenticate
 from django.utils.translation import ugettext as _
 
@@ -94,3 +94,8 @@ class AuthenticationForm(forms.Form):
 
     def get_user(self):
         return self.user
+
+class LinkForm(forms.ModelForm):
+    class Meta:
+        model  = Link
+        fields = ('url', )
