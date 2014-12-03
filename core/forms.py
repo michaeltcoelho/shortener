@@ -1,26 +1,27 @@
 #coding:utf-8
 from django import forms
 from models import User
+from django.contrib.auth import get_user_model, authenticate
 from django.utils.translation import ugettext as _
 
 class UserCreationForm(forms.Form):
 
     error_messages = {
-        'password_match': _(u'The password does not match...'),
-        'name_exist' 	: _(u'The name already exists, try another!'),
-        'email_exist' 	: _(u'The email already exists, try another!'),
+        'password_match': _(u'Confirmar senha não confere com a senha informada!'),
+        'name_exist' 	: _(u'O nome já existe, tente outro!'),
+        'email_exist' 	: _(u'O email já existe, tente outro!'),
     }
 
     help_messages = {
         'confirm_pass' : _(u'Informe a mesma senha como acima, para verificação.'),
     }
 
-    name  = forms.CharField(label=_('Name'), widget=forms.TextInput, required=True, initial='')
-    email = forms.EmailField(label=_('Email'), widget=forms.TextInput, required=True, initial='')
-    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput, required=True, initial='')
+    name  = forms.CharField(label=_('Nome'), widget=forms.TextInput, required=True, initial='')
+    email = forms.EmailField(label=_('Email'), widget=forms.EmailInput, required=True, initial='')
+    password = forms.CharField(label=_('Senha'), widget=forms.PasswordInput, required=True, initial='')
 
     confirm_password = forms.CharField(
-        label=_('Confirm Password'),
+        label=_('Confirmar Senha'),
         widget=forms.PasswordInput,
         required=True,
         help_text=help_messages['confirm_pass'],
@@ -29,7 +30,7 @@ class UserCreationForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)
-        self.user = User
+        self.user = get_user_model()
 
     def clean_name(self):
         name = self.cleaned_data.get('name')
@@ -62,4 +63,34 @@ class UserCreationForm(forms.Form):
             raise forms.ValidationError(self.error_messages['password_match'], code='password_match')
         return confirm_password
 
+class AuthenticationForm(forms.Form):
 
+    error_messages = {
+        'invalid_login' : u'Usuário ou Senha inválido. Tente novamente!',
+    }
+
+    email    = forms.EmailField(label=_('Email'), widget=forms.EmailInput, required=True, initial='')
+    password = forms.CharField(label=_('Senha'), widget=forms.PasswordInput, required=True, initial='')
+
+    def __init__(self, *args, **kwargs):
+        super(AuthenticationForm, self).__init__(*args, **kwargs)
+        self.user = None
+
+    def clean(self):
+        email    = self.cleaned_data.get('email')
+        password = self.cleaned_data.get('password')
+
+        if email and password:
+
+            self.user = authenticate(email=email, password=password)
+
+            if self.user is None:
+                raise forms.ValidationError(
+                    self.error_messages['invalid_login'],
+                    code='invalid_login'
+                )
+
+        return self.cleaned_data
+
+    def get_user(self):
+        return self.user

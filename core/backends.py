@@ -1,25 +1,22 @@
 #coding:utf-8
 from django.contrib.auth import get_user_model
+from .models import User
 
 class AuthBackend(object):
     """
     AuthBackend
     """
-    def authenticate(self, email=None, password=None, **kwargs):
-        UserModel = get_user_model()
+    def authenticate(self, email=None, password=None):
         try:
-            user = UserModel.objects.get(email__exact=email)
+            user = get_user_model().objects.get(email=email)
             if user.check_password(password):
                 return user
-        except Exception, e:
+        except User.DoesNotExist, e:
             return None
+        return None
 
     def get_user(self, user_id):
-        UserModel = get_user_model()
         try:
-            user = UserModel.objects.get(pk=user_id)
-            if user.is_active:
-                return user
-            return None
-        except Exception, e:
+            return get_user_model().objects.get(pk=user_id)
+        except User.DoesNotExist, e:
             return None

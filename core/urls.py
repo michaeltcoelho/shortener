@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, url, include
 
-urlpatterns = patterns('',
-    url(r'^$', 'core.views.home', name='home'),
+urlpatterns = patterns('core.views',
+    url(r'^$', 'home', name='home'),
+    url(r'^login/$', 'login', name='login'),
+    url(r'^signup/$', 'signup', name='signup'),
+    url(r'^logout/$', 'logout', name='logout'),
 )

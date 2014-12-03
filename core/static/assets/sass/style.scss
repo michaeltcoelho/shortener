@@ -27,6 +27,10 @@ body {
 a {
     text-decoration: none;
     color: #337ab7;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .container {
@@ -43,6 +47,7 @@ a {
     height: 60px;
     border-bottom: 2px solid $second-color;
     padding: 1em;
+    margin-bottom: 20px;
 
     .logo {
         color: $first-color;
@@ -109,12 +114,47 @@ a {
 }
 
 #shortener-content {
-    padding-top: 11%;
+    margin-top: 12%;
+}
+
+#signup-form {
+    width: 60%;
 }
 
 /*
     components
 */
+
+
+.form {
+
+    padding: 1em;
+
+    > div {
+        position: relative;
+        margin-bottom: 8px;
+        display: block;
+        width: 100%;
+
+        label {
+            display: block;
+            width: 100%;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            @include radius(4px);
+            margin-top: 4px;
+            border: 1px solid $second-color;
+
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+}
 
 .menu-list {
     margin: 0;
@@ -203,10 +243,34 @@ a {
             }
         }
     }
+}
 
-    .panel {
-        border: 1px solid $first-color;
+.panel
+{
+    border: 1px solid $second-color;
+    @include radius(4px);
+
+    .panel-header {
+        padding: 1em;
+        background-color: $second-color;
+
+        h3 {
+            margin: 0;
+        }
     }
+}
+
+.text-danger {
+    color: #a94442;
+}
+
+.help-text {
+    color: $first-color;
+}
+
+.field-errors {
+    color: #a94442;
+    padding: 0 1em 0 1em;
 }
 
 /*
@@ -221,24 +285,32 @@ a {
     float: right !important;
 }
 
+.to-center {
+    margin: 0 auto !important;
+    float: none !important;
+}
+
 
 /*
     responsive
 */
 
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
+
     .container {
         width: 750px;
     }
 }
 
 @media only screen and (min-width: 1024px) {
+
     .container {
         width: 970px;
     }
 }
 
 @media only screen and (min-width: 1224px) {
+
     .container {
         width: 1170px;
     }

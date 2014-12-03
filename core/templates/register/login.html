@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Shortener {% endblock title %}
+
+{% block content %}
+
+   <div class="container">
+       <div id="signup-form" class="panel to-center">
+           <div class="panel-header">
+               <h3>Entrar</h3>
+           </div>
+           <div class="panel-body">
+               <p class="field-errors">
+                   {{form.non_field_errors|striptags}}
+               </p>
+               <form action="{% url 'core:login' %}" method="post" class="form">
+                   {% csrf_token %}
+                    <div>
+                        <label for="{{form.email.id_for_label}}">{{form.email.label}} </label>
+                        {{form.email}}
+                        <p class="text-danger">{{form.email.errors|striptags}}</p>
+                    </div>
+                    <div>
+                        <label for="{{form.password.id_for_label}}">{{form.password.label}} </label>
+                        {{form.password}}
+                        <p class="text-danger">{{form.password.errors|striptags}}</p>
+                    </div>
+                    <div>
+                        <button id="short" class="btn">Entrar</button>
+                    </div>
+               </form>
+           </div>
+       </div>
+   </div>
+
+{% endblock content %}

@@ -31,6 +31,10 @@ ALLOWED_HOSTS = [ 'localhost', '.herokuapp.com', ]
 
 AUTH_USER_MODEL = 'core.User'
 
+AUTHENTICATION_BACKENDS = (
+    'core.backends.AuthBackend',
+)
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -54,6 +58,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
 )
 
 ROOT_URLCONF = 'shortener.urls'

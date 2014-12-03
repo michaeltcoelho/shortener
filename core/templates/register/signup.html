@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} Shortener {% endblock title %}
+
+{% block content %}
+
+   <div class="container">
+       <div id="signup-form" class="panel to-center">
+           <div class="panel-header">
+               <h3>Cadastre-se</h3>
+           </div>
+           <div class="panel-body">
+               <p class="field-errors">
+                    {{form.non_field_errors|striptags}}
+               </p>
+               <form action="{% url 'core:signup' %}" method="post" class="form">
+                   {% csrf_token %}
+                    <div>
+                        <label for="{{form.name.id_for_label}}">{{form.name.label}} </label>
+                        {{form.name}}
+                        <p class="text-danger">{{form.name.errors|striptags}}</p>
+                    </div>
+                    <div>
+                        <label for="{{form.email.id_for_label}}">{{form.email.label}} </label>
+                        {{form.email}}
+                        <p class="text-danger">{{form.email.errors|striptags}}</p>
+                    </div>
+                   <div>
+                        <label for="{{form.password.id_for_label}}">{{form.password.label}} </label>
+                        {{form.password}}
+                       <p class="text-danger">{{form.password.errors|striptags}}</p>
+                    </div>
+                   <div>
+                        <label for="{{form.confirm_password.id_for_label}}">{{form.confirm_password.label}} </label>
+                        {{form.confirm_password}}
+                        {% if form.confirm_password.errors %}
+                            <p class="text-danger">{{form.confirm_password.errors|striptags}}</p>
+                        {% else %}
+                            <p class="help-text">{{form.confirm_password.help_text}}</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <button id="short" class="btn">Cadastar</button>
+                    </div>
+               </form>
+           </div>
+       </div>
+   </div>
+
+{% endblock content %}
