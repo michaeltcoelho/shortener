@@ -1,17 +1,27 @@
 from django.shortcuts import render
+from django.conf import settings
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse as r
 from django.contrib import auth
 from .forms import UserCreationForm, AuthenticationForm, LinkForm
-from .models import User
-
+from .models import User, Link
 import json
 
 def home(request):
     """
     home - app home
     """
-    return render(request, 'index.html')
+    if request.user.is_authenticated():
+        links = Link.objects.filter(user=request.user)
+    else:
+        links = None
+
+    context = {
+        'links' : links,
+        'base_url' : settings.BASE_URL
+    }
+
+    return render(request, 'index.html', context)
 
 def login(request,
           login_form=AuthenticationForm,
@@ -75,13 +85,13 @@ def shortenit(request,
     """
     if request.is_ajax():
 
-        form = link_form(request.POST)
+        form = link_form(request.GET)
 
         if form.is_valid():
-            link = form.save()
+            link      = form.save()
             link.user = request.user if request.user.is_authenticated() else None
             link.save()
-            return HttpResponse({ 'url' : link.get_shortened_url() }, content_type='application/json')
+            return HttpResponse(json.dumps(link.get_shortened_url()), content_type='application/json')
         return HttpResponse(json.dumps(form.errors), content_type='application/json')
 
 def redirect(request, id):

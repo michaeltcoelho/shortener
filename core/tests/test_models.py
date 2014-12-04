@@ -73,7 +73,7 @@ class LinkModelTest(TestCase):
         self.link.user = self.user
         self.link.save()
 
-        u = '%s - %s' % (self.link.url, self.link.to_base64())
+        u = '%s - %s' % (self.link.url, self.link.to_base62())
 
         self.assertEqual(1, self.link.pk)
         self.assertEqual(self.link.__unicode__(), u)

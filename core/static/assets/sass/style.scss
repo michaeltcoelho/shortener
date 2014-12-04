@@ -56,7 +56,7 @@ a {
     }
 }
 
-#search {
+#shortener {
     position: relative;
     margin-top: 2em;
     background-color: $second-color;
@@ -66,7 +66,7 @@ a {
     width: 100%;
 }
 
-#search-form {
+#shortener-form {
     float: left;
     padding: 1em 1.8em 1em 1em;
     width: 100%;
@@ -119,6 +119,14 @@ a {
 
 #signup-form {
     width: 60%;
+}
+
+#url-shortened {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    padding: 1em;
 }
 
 /*
@@ -219,7 +227,6 @@ a {
         tr {
             display: table-row;
             th {
-                text-align: center;
                 padding: 8px;
             }
         }
@@ -232,7 +239,6 @@ a {
             display: table-row;
             border-bottom: 1px solid $second-color;
             td {
-                text-align: center;
                 line-height: 1.42857143;
                 padding: 12px;
             }
@@ -260,6 +266,10 @@ a {
     }
 }
 
+/*
+    utils
+*/
+
 .text-danger {
     color: #a94442;
 }
@@ -272,10 +282,6 @@ a {
     color: #a94442;
     padding: 0 1em 0 1em;
 }
-
-/*
-    utils
-*/
 
 .pull-left {
     float: left !important;
@@ -290,7 +296,17 @@ a {
     float: none !important;
 }
 
+.text-center {
+    text-align: center;
+}
 
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
 /*
     responsive
 */

@@ -2,6 +2,8 @@
 from django.test import TestCase, Client
 from django.core.urlresolvers import reverse as r
 from core.forms import UserCreationForm, AuthenticationForm
+from django.conf import settings
+import json
 
 client = Client()
 
@@ -80,17 +82,50 @@ class ShortenitTest(TestCase):
         """
         AJAX POST /shortenit should return 200
         """
-        self.resp = client.post(r('core:shortenit'), { 'url' : 'www.google.com' }, **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'})
-        self.assertEqual(200, self.resp.status_code)
+        data = { 'url' : 'www.google.com' }
+        kwargs = { 'HTTP_X_REQUESTED_WITH' : 'XMLHttpRequest' }
 
-    def test_url_shortened_with_success(self):
-        """
-        """
-        resp = client.post(r('core:shortenit'), { 'url' : 'www.google.com' }, **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'})
-        self.assertContains(resp, 'url')
+        resp  = client.get(r('core:shortenit'), data, **kwargs)
 
-    def test_url_shortened_with_errors(self):
+        self.assertEqual(200, resp.status_code)
+
+    def test_url_shortened_valid_url(self):
         """
+        Valid URL, must
         """
-        resp = client.post(r('core:shortenit'), { 'url' : 'www.googs$%#le.com' }, **{'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest'})
-        self.assertContains(resp, 'Informe uma url válida.')
+        url    = u'{0}{1}'.format(settings.BASE_URL, 1)
+
+        data   = { 'url': 'www.google.com' }
+        kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
+
+        resp   = self.client.get(r('core:shortenit'), data=data, **kwargs)
+
+        o = json.loads(resp.content, encoding='utf8')
+
+        self.assertEqual(url, o)
+
+    def test_url_shortened_invalid_url(self):
+        """
+        Invalid URL
+        """
+        data   = { 'url': 'www.#$$%$#$.com' }
+        kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
+
+        resp   = self.client.get(r('core:shortenit'), data=data, **kwargs)
+
+        o = json.loads(resp.content, encoding='utf8')
+
+        self.assertDictEqual({ u'url' : [u'Informe uma URL válida.']}, o)
+
+    def test_url_shortened_url_required(self):
+        """
+        URL is required
+        """
+        data   = { 'url': '' }
+        kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
+
+        resp   = self.client.get(r('core:shortenit'), data=data, **kwargs)
+
+        o = json.loads(resp.content, encoding='utf8')
+
+        self.assertDictEqual({ u'url' : [u'Este campo é obrigatório.']}, o)

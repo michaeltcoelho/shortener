@@ -29,7 +29,7 @@
                     | <a href="{% url 'core:logout'%}" class="text-danger pull-right">logout</a>
                 </span>
                 <span class="help-text pull-right">
-                    Seja bem vindo, {{request.user.name}}
+                    Olá, {{request.user.name}}
                 </span>
             {% endif %}
         </div>
@@ -45,6 +45,8 @@
     <!-- scripts-->
 
     <script type="text/javascript" src="{% static 'bower/jquery/dist/jquery.min.js' %}"></script>
+
+    {% block scripts %} {% endblock scripts %}
 
     <!-- scripts -->
 

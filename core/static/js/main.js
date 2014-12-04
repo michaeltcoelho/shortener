@@ -1,1 +1,1 @@
-console.log("Hello World");
+var shortener={el:{input:$("input#url"),btn:$("button#short")},init:function(){shortener.el.input.on("keypress",shortener.shortenit),shortener.el.btn.on("click",shortener.shortenit)},shortenit:function(t){t.preventDefault();var n=shortener.el.input.val();$.get("/shortenit/",{url:n},function(t){console.log(t)})}};$(function(){shortener.init()});

@@ -1,7 +1,7 @@
 #coding: utf-8
 import string
 
-__all__ = [ 'base64', ]
+__all__ = [ 'base62', ]
 
 class Converter(object):
     """
@@ -59,6 +59,6 @@ class Converter(object):
             decoded = -decoded
         return decoded
 
-ascii64 = string.ascii_uppercase  + string.digits + string.ascii_lowercase
+ascii62 = string.digits + string.letters
 
-base64 = Converter(ascii64)
+base62 = Converter(ascii62)

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Shortener {% endblock title %}
 
@@ -6,60 +7,61 @@
 
 <div id="content">
     <div class="container">
-        <div id="search">
-            <form id="search-form" action="#">
+        <div id="shortener">
+            <form id="shortener-form" action="#">
                 <div>
                     <label for="url">Cole aqui sua url: </label>
-                    <input type="url" id="url" class="form-control" placeholder="http://"/>
+                    <input type="url" id="url"  placeholder="http://"/>
                 </div>
                 <div>
                     <button id="short" class="btn">encurtar</button>
                 </div>
             </form>
+            <div id="url-shortened">
+
+            </div>
         </div>
     </div>
 </div>
 
-<div id="shortener-content">
-    <div class="container">
-        <div class="panel">
-            <div class="panel-header">
-                <h3>Links</h3>
-            </div>
-            <div class="panel-body">
-                <table class="table">
-                <thead>
-                    <tr>
-                        <th>URL</th>
-                        <th>DATA</th>
-                        <th>URL ENCURTADA</th>
-                        <th>CLICKS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="#" class="link">www.g1.globo.com</a></td>
-                        <td>Há 22 minutos</td>
-                        <td><a href="#" class="link">goo.gl/SFa45</a></td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#" class="link">www.g1.globo.com</a></td>
-                        <td>Há 22 minutos</td>
-                        <td><a href="#" class="link">goo.gl/SFa45</a></td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#" class="link">www.g1.globo.com</a></td>
-                        <td>Há 22 minutos</td>
-                        <td><a href="#" class="link">goo.gl/SFa45</a></td>
-                        <td>10</td>
-                    </tr>
-                </tbody>
-            </table>
+{% if links %}
+    <div id="shortener-content">
+        <div class="container">
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>Links</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-left">URL</th>
+                            <th class="text-left">DATA</th>
+                            <th class="text-left">URL ENCURTADA</th>
+                            <th class="text-center">CLICKS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for link in links %}
+                            <tr>
+                                <td class="text-left"><a href="{{link.url}}" class="link" target="_blank">{{link.url}}</a></td>
+                                <td class="text-align">{{link.submitted}}</td>
+                                <td class="text-left"><a href="{{ link.get_absolute_url }}" class="link">{{base_url}}{{link.to_base62}}</a></td>
+                                <td class="text-align">{{link.visits}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
             </div>
         </div>
-    </div>
 </div>
+{% endif %}
 
 {% endblock content %}
+
+{% block scripts %}
+
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+{% endblock scripts %}

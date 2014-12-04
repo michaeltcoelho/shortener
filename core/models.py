@@ -3,7 +3,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse as r
 from django.contrib.auth.models import AbstractBaseUser
 from django.utils.translation import ugettext_lazy as _
-from core.converter import base64
+from core.converter import base62
 
 from managers import UserManager
 
@@ -42,16 +42,16 @@ class Link(models.Model):
         ordering = ['visits']
 
     def __unicode__(self):
-        return '%s - %s' % (self.url, self.to_base64(), )
+        return '%s - %s' % (self.url, self.to_base62(), )
 
-    def to_base64(self):
-        return base64.from_decimal(self.id)
+    def to_base62(self):
+        return base62.from_decimal(self.id)
 
     def get_absolute_url(self):
-        return r('core:redirect', { 'id' : self.to_base64() })
+        return r('core:redirect', args=[self.to_base62(), ])
 
     def get_shortened_url(self):
-        return '%s%s' % (settings.BASE_URL, self.to_base64())
+        return '{0}{1}'.format(settings.BASE_URL, self.to_base62())
 
     def to_json(self):
         return {
