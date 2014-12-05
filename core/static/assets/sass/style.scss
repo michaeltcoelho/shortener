@@ -92,7 +92,7 @@ a {
             width: 100%;
             padding: 15px;
             @include radius(4px);
-            border: none;
+            border: 1px solid transparent;
             margin-top: 10px;
             &:focus {
                 outline: 0;
@@ -105,7 +105,7 @@ a {
 
         button {
             position: relative;
-            top: 32px;
+            top: 31px;
             margin-left: 10px;
             padding: 0.899em;
             width: 100%;
@@ -307,6 +307,11 @@ a {
 .text-right {
     text-align: right;
 }
+
+.field-error {
+    border: 1px solid #a94442 !important;
+}
+
 /*
     responsive
 */

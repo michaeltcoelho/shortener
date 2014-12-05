@@ -7,19 +7,35 @@ var shortener = {
     },
 
     init: function() {
-       shortener.el.input.on('keypress', shortener.shortenit);
-       shortener.el.btn.on('click', shortener.shortenit);
+       shortener.el.btn.on('click', shortener.short);
+       shortener.el.input.on('keyup', function() {
+            shortener.el.input.removeClass('field-error')
+       });
     },
 
-    shortenit: function (e) {
+    short: function (e) {
 
         e.preventDefault();
 
         var url = shortener.el.input.val();
 
-        $.get('/shortenit/', { 'url' :  url }, function(data) {
-            console.log(data);
-        });
+        if (url)
+        {
+            $.get(
+                '/shortenit/',
+                { 'url' :  url },
+                function(data)
+                {
+                    console.log(data);
+                }
+            );
+        }
+        else {
+            shortener.el.input.addClass('field-error').focus();
+        }
+    },
+    html: function() {
+        return $('');
     }
 };
 
