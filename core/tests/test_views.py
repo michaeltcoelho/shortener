@@ -2,7 +2,8 @@
 from django.test import TestCase, Client
 from django.core.urlresolvers import reverse as r
 from core.forms import UserCreationForm, AuthenticationForm
-from django.conf import settings
+from core.models import Link
+
 import json
 
 client = Client()
@@ -78,14 +79,17 @@ class ShortenitTest(TestCase):
     """
     ShortenitTest -
     """
+    def setUp(self):
+        self.link = Link(user=None, url='http://michael.tcoelho.github.io/')
+
     def test_get(self):
         """
-        AJAX POST /shortenit should return 200
+        AJAX POST /short should return 200
         """
         data = { 'url' : 'www.google.com' }
         kwargs = { 'HTTP_X_REQUESTED_WITH' : 'XMLHttpRequest' }
 
-        resp  = client.get(r('core:shortenit'), data, **kwargs)
+        resp  = client.get(r('core:shorten'), data, **kwargs)
 
         self.assertEqual(200, resp.status_code)
 
@@ -93,16 +97,14 @@ class ShortenitTest(TestCase):
         """
         Valid URL, must
         """
-        url    = u'{0}{1}'.format(settings.BASE_URL, 1)
-
         data   = { 'url': 'www.google.com' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
 
-        resp   = self.client.get(r('core:shortenit'), data=data, **kwargs)
+        resp   = self.client.get(r('core:shorten'), data=data, **kwargs)
 
         o = json.loads(resp.content, encoding='utf8')
 
-        self.assertEqual(url, o)
+        self.assertNotIn('error', o)
 
     def test_url_shortened_invalid_url(self):
         """
@@ -111,11 +113,11 @@ class ShortenitTest(TestCase):
         data   = { 'url': 'www.#$$%$#$.com' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
 
-        resp   = self.client.get(r('core:shortenit'), data=data, **kwargs)
+        resp   = self.client.get(r('core:shorten'), data=data, **kwargs)
 
         o = json.loads(resp.content, encoding='utf8')
 
-        self.assertDictEqual({ u'url' : [u'Informe uma URL válida.']}, o)
+        self.assertIn('error', o)
 
     def test_url_shortened_url_required(self):
         """
@@ -124,8 +126,24 @@ class ShortenitTest(TestCase):
         data   = { 'url': '' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
 
-        resp   = self.client.get(r('core:shortenit'), data=data, **kwargs)
+        resp   = self.client.get(r('core:shorten'), data=data, **kwargs)
 
         o = json.loads(resp.content, encoding='utf8')
 
-        self.assertDictEqual({ u'url' : [u'Este campo é obrigatório.']}, o)
+        self.assertIn('error', o)
+
+    def test_url_shortened_must_be_unique(self):
+        """
+        The url shortened must be an unique url, if the user to shorten the same url,
+        and it exists on database, must return it
+        """
+        self.link.save()
+
+        data   = { 'url': 'http://michael.tcoelho.github.io' }
+        kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
+
+        resp   = self.client.get(r('core:shorten'), data=data, **kwargs)
+
+        o = json.loads(resp.content, encoding='utf8')
+
+        self.assertDictEqual(self.link.to_json(), o)

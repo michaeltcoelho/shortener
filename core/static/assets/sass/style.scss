@@ -22,6 +22,7 @@ body {
         size: 100%;
     }
     color: #6E6E6E;
+    height: 100%;
 }
 
 a {
@@ -126,7 +127,32 @@ a {
     position: relative;
     float: left;
     width: 100%;
-    padding: 1em;
+    padding: 0 0 2em 1em;
+
+    > div {
+        background-color: $first-color;
+        display: block;
+        float: left;
+        padding: 1em;
+        color: #fff;
+        @include radius(4px);
+
+        span {
+            display: block;
+        }
+
+        a {
+           color: #fff;
+           font: {
+              weight: bold;
+              size: 1.2em;
+           }
+        }
+    }
+}
+
+#footer {
+    padding: 2em;
 }
 
 /*

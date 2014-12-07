@@ -13,5 +13,8 @@
     "bower_components",
     "core/static/bower",
     "test"
-  ]
+  ],
+  "devDependencies": {
+    "toastr": "~2.1.0"
+  }
 }

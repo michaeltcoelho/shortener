@@ -17,11 +17,7 @@
                     <button id="short" class="btn">encurtar</button>
                 </div>
             </form>
-            <div id="url-shortened">
-                <div class="url">
-                    <a href="#">http://www.goo.gl/1wEs</a>
-                </div>
-            </div>
+            <div id="shortened"></div>
         </div>
     </div>
 </div>
@@ -34,7 +30,7 @@
                     <h3>Links</h3>
                 </div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table id="link-table" class="table">
                     <thead>
                         <tr>
                             <th class="text-left">URL</th>
@@ -46,10 +42,18 @@
                     <tbody>
                         {% for link in links %}
                             <tr>
-                                <td class="text-left"><a href="{{link.url}}" class="link" target="_blank">{{link.url}}</a></td>
-                                <td class="text-align">{{link.submitted}}</td>
-                                <td class="text-left"><a href="{{ link.get_absolute_url }}" class="link">{{base_url}}{{link.to_base62}}</a></td>
-                                <td class="text-align">{{link.visits}}</td>
+                                <td class="text-left">
+                                    <a href="{{link.url}}" target="_blank" class="link">{{link.url}}</a>
+                                </td>
+                                <td class="text-align">
+                                    {{link.submitted | date}}
+                                </td>
+                                <td class="text-left">
+                                    <a href="{{ link.get_absolute_url }}" class="link">{{base_url}}{{link.to_base62}}</a>
+                                </td>
+                                <td class="text-center">
+                                    {{link.visits}}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
