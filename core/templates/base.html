@@ -27,10 +27,10 @@
                 </ul>
             {% else %}
                 <span class="pull-right">
-                    | <a href="{% url 'core:logout'%}" class="text-danger pull-right">logout</a>
+                   <a href="{% url 'core:logout'%}" class="logout pull-right">logout</a>
                 </span>
-                <span class="help-text pull-right">
-                    Olá, {{request.user.name}}
+                <span class="greetings pull-right">
+                    Olá, {{request.user.name}} | &nbsp;
                 </span>
             {% endif %}
         </div>

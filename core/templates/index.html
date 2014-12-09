@@ -10,8 +10,8 @@
         <div id="shortener">
             <form id="shortener-form" action="#">
                 <div>
-                    <label for="url">Cole aqui sua url: </label>
-                    <input type="url" id="url"  placeholder="http://"/>
+                    <label for="url">Informe sua url para encurtar!</label>
+                    <input type="url" id="url"  placeholder="http:// ou https://"/>
                 </div>
                 <div>
                     <button id="short" class="btn">encurtar</button>
@@ -22,7 +22,7 @@
     </div>
 </div>
 
-{% if links %}
+{% if request.user.is_authenticated %}
     <div id="shortener-content">
         <div class="container">
             <div class="panel">
@@ -35,7 +35,6 @@
                         <tr>
                             <th class="text-left">URL</th>
                             <th class="text-left">DATA</th>
-                            <th class="text-left">URL ENCURTADA</th>
                             <th class="text-center">CLICKS</th>
                         </tr>
                     </thead>
@@ -43,13 +42,10 @@
                         {% for link in links %}
                             <tr>
                                 <td class="text-left">
-                                    <a href="{{link.url}}" target="_blank" class="link">{{link.url}}</a>
+                                    <a href="{{ link.get_absolute_url }}" class="link">{{base_url}}{{link.to_base62}}</a>
                                 </td>
                                 <td class="text-align">
                                     {{link.submitted | date}}
-                                </td>
-                                <td class="text-left">
-                                    <a href="{{ link.get_absolute_url }}" class="link">{{base_url}}{{link.to_base62}}</a>
                                 </td>
                                 <td class="text-center">
                                     {{link.visits}}

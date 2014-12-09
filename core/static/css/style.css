@@ -32,18 +32,21 @@ a {
   position: relative;
   width: 100%;
   height: 60px;
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid #2969B0;
   padding: 1em;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  background-color: #F86B4F; }
   #header .logo {
-    color: #3498db;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    text-weigth: bold; }
+    #header .logo a {
+      color: #ffffff; }
 
 #shortener {
   position: relative;
   margin-top: 2em;
-  background-color: #eee;
+  background-color: #F86B4F;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -52,6 +55,7 @@ a {
   width: 100%; }
 
 #shortener-form {
+  display: block;
   float: left;
   padding: 1em 1.8em 1em 1em;
   width: 100%; }
@@ -61,6 +65,7 @@ a {
   #shortener-form > div:first-child {
     width: 80%; }
     #shortener-form > div:first-child > label {
+      color: #fff;
       font-size: 16px;
       font-weight: bold; }
     #shortener-form > div:first-child > input {
@@ -71,7 +76,8 @@ a {
       -moz-border-radius: 4px;
       border-radius: 4px;
       border: 1px solid transparent;
-      margin-top: 10px; }
+      margin-top: 10px;
+      -webkit-transition: all 0.2s; }
       #shortener-form > div:first-child > input:focus {
         outline: 0; }
   #shortener-form > div:last-child {
@@ -84,7 +90,10 @@ a {
       width: 100%; }
 
 #shortener-content {
-  margin-top: 12%; }
+  display: block;
+  float: left;
+  width: 100%;
+  margin-top: 1em; }
 
 #signup-form {
   width: 60%; }
@@ -96,7 +105,7 @@ a {
   width: 100%;
   padding: 0 0 2em 1em; }
   #url-shortened > div {
-    background-color: #3498db;
+    background-color: #FCCD1B;
     display: block;
     float: left;
     padding: 1em;
@@ -112,11 +121,17 @@ a {
       font-size: 1.2em; }
 
 #footer {
-  padding: 2em; }
+  padding: 4em; }
 
 /*
     components
 */
+.greetings {
+  color: #ffffff; }
+
+.logout {
+  color: #ffffff; }
+
 .form {
   padding: 1em; }
   .form > div {
@@ -135,7 +150,7 @@ a {
       -moz-border-radius: 4px;
       border-radius: 4px;
       margin-top: 4px;
-      border: 1px solid #eee; }
+      border: 1px solid #2969B0; }
       .form > div input:focus {
         outline: 0; }
 
@@ -150,32 +165,28 @@ a {
     font-family: "Open Sans", sans-serif;
     font-size: 14px; }
     .menu-list > li a {
-      background-color: #3498db;
-      border-bottom: 3px solid #2980b9;
+      background-color: #FCCD1B;
+      border-bottom: 3px solid #2969B0;
       text-decoration: none;
-      color: #fff;
+      color: #2969B0;
       padding: 10px 10px;
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
       border-radius: 4px; }
-      .menu-list > li a:hover {
-        background-color: #eee;
-        border-bottom: 3px solid #bdc3c7;
-        color: #3498db; }
 
 .btn {
-  background-color: #3498db;
-  border: 1px solid #2980b9;
-  border-bottom: 3px solid #2980b9;
+  background-color: #FCCD1B;
+  border: none;
+  border-bottom: 3px solid #2969B0;
   padding: 10px;
-  color: #fff;
+  color: #2969B0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px; }
   .btn:focus {
     outline: 0; }
-  .btn:active {
-    border-bottom: 1px solid #2980b9; }
+  .btn.btn-white {
+    background-color: #ffffff; }
 
 .table {
   border-spacing: 0;
@@ -185,7 +196,7 @@ a {
   .table thead {
     display: table-header-group;
     vertical-align: middle;
-    border-bottom: 2px solid #eee; }
+    border-bottom: 2px solid #FCCD1B; }
     .table thead tr {
       display: table-row; }
       .table thead tr th {
@@ -195,7 +206,7 @@ a {
     vertical-align: middle; }
     .table tbody tr {
       display: table-row;
-      border-bottom: 1px solid #eee; }
+      border-bottom: 1px solid #FCCD1B; }
       .table tbody tr td {
         line-height: 1.42857143;
         padding: 12px; }
@@ -204,13 +215,14 @@ a {
         cursor: pointer; }
 
 .panel {
-  border: 1px solid #eee;
+  border: 1px solid #FCCD1B;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px; }
   .panel .panel-header {
     padding: 1em;
-    background-color: #eee; }
+    background-color: #FCCD1B;
+    color: #2969B0; }
     .panel .panel-header h3 {
       margin: 0; }
 
@@ -218,13 +230,13 @@ a {
     utils
 */
 .text-danger {
-  color: #a94442; }
+  color: #F22613; }
 
 .help-text {
-  color: #3498db; }
+  color: #2969B0; }
 
 .field-errors {
-  color: #a94442;
+  color: #F86B4F;
   padding: 0 1em 0 1em; }
 
 .pull-left {
@@ -247,7 +259,7 @@ a {
   text-align: right; }
 
 .field-error {
-  border: 1px solid #a94442 !important; }
+  border: 3px solid #FCCD1B !important; }
 
 /*
     responsive

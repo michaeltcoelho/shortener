@@ -4,10 +4,19 @@
     style.scss
 */
 
+// font
 $font: 'Open Sans', sans-serif;
-$first-color: #3498db; // blue
-$second-color: #eee; // gray
-$third-color: #2980b9; // dark blue
+
+// palette
+$yellow: #FCCD1B;
+$orange: #F86B4F;
+$green: #40D3B7;
+$blue: #6CC1ED;
+$dark-blue: #2969B0;
+$red: #F22613;
+$yellow-hover: #ffffd3;
+$white: #ffffff;
+
 
 * {
     -webkit-box-sizing: border-box;
@@ -46,21 +55,25 @@ a {
     position: relative;
     width: 100%;
     height: 60px;
-    border-bottom: 2px solid $second-color;
+    border-bottom: 2px solid $dark-blue;
     padding: 1em;
     margin-bottom: 20px;
+    background-color: $orange;
 
     .logo {
-        color: $first-color;
         margin: 0;
         padding: 0;
+        text-weigth: bold;
+        a {
+            color: $white;
+        }
     }
 }
 
 #shortener {
     position: relative;
     margin-top: 2em;
-    background-color: $second-color;
+    background-color: $orange;
     @include radius(4px);
     float: left;
     display: block;
@@ -68,6 +81,7 @@ a {
 }
 
 #shortener-form {
+    display: block;
     float: left;
     padding: 1em 1.8em 1em 1em;
     width: 100%;
@@ -82,6 +96,7 @@ a {
         width: 80%;
 
         > label {
+            color: #fff;
             font: {
                 size: 16px;
                 weight: bold;
@@ -95,6 +110,7 @@ a {
             @include radius(4px);
             border: 1px solid transparent;
             margin-top: 10px;
+            -webkit-transition: all 0.2s;
             &:focus {
                 outline: 0;
             }
@@ -115,7 +131,10 @@ a {
 }
 
 #shortener-content {
-    margin-top: 12%;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-top: 1em;
 }
 
 #signup-form {
@@ -130,7 +149,7 @@ a {
     padding: 0 0 2em 1em;
 
     > div {
-        background-color: $first-color;
+        background-color: $yellow;
         display: block;
         float: left;
         padding: 1em;
@@ -152,13 +171,20 @@ a {
 }
 
 #footer {
-    padding: 2em;
+    padding: 4em;
 }
 
 /*
     components
 */
 
+.greetings {
+    color: $white;
+}
+
+.logout {
+    color: $white;
+}
 
 .form {
 
@@ -181,7 +207,7 @@ a {
             padding: 15px;
             @include radius(4px);
             margin-top: 4px;
-            border: 1px solid $second-color;
+            border: 1px solid $dark-blue;
 
             &:focus {
                 outline: 0;
@@ -205,37 +231,31 @@ a {
         font-size: 14px;
 
         a {
-            background-color: $first-color;
-            border-bottom: 3px solid $third-color;
+            background-color: $yellow;
+            border-bottom: 3px solid $dark-blue;
             text-decoration: none;
 
-            color: #fff;
+            color: $dark-blue;
             padding: 10px 10px;
             @include radius(4px);
-
-            &:hover {
-                background-color: $second-color;
-                border-bottom: 3px solid #bdc3c7;
-                color: $first-color;
-            }
         }
     }
 }
 
 .btn {
-    background-color: $first-color;
-    border: 1px solid $third-color;
-    border-bottom: 3px solid $third-color;
+    background-color: $yellow;
+    border: none;
+    border-bottom: 3px solid $dark-blue;
     padding: 10px;
-    color: #fff;
+    color: $dark-blue;
     @include radius(4px);
 
     &:focus {
         outline: 0;
     }
 
-    &:active {
-        border-bottom: 1px solid $third-color;
+    &.btn-white {
+        background-color: $white;
     }
 }
 
@@ -248,7 +268,7 @@ a {
     thead {
         display: table-header-group;
         vertical-align: middle;
-        border-bottom: 2px solid $second-color;
+        border-bottom: 2px solid $yellow;
 
         tr {
             display: table-row;
@@ -263,14 +283,14 @@ a {
         vertical-align: middle;
         tr {
             display: table-row;
-            border-bottom: 1px solid $second-color;
+            border-bottom: 1px solid $yellow;
             td {
                 line-height: 1.42857143;
                 padding: 12px;
             }
 
             &:hover {
-                background-color: #ffffd3;
+                background-color: $yellow-hover;
                 cursor: pointer;
             }
         }
@@ -279,12 +299,13 @@ a {
 
 .panel
 {
-    border: 1px solid $second-color;
+    border: 1px solid $yellow;
     @include radius(4px);
 
     .panel-header {
         padding: 1em;
-        background-color: $second-color;
+        background-color: $yellow;
+        color: $dark-blue;
 
         h3 {
             margin: 0;
@@ -297,15 +318,15 @@ a {
 */
 
 .text-danger {
-    color: #a94442;
+    color: $red;
 }
 
 .help-text {
-    color: $first-color;
+    color: $dark-blue;
 }
 
 .field-errors {
-    color: #a94442;
+    color: $orange;
     padding: 0 1em 0 1em;
 }
 
@@ -335,7 +356,7 @@ a {
 }
 
 .field-error {
-    border: 1px solid #a94442 !important;
+    border: 3px solid $yellow !important;
 }
 
 /*

@@ -26,7 +26,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = [ 'localhost', '.herokuapp.com', ]
+ALLOWED_HOSTS = [ 'localhost', ]
 
 # Application User
 

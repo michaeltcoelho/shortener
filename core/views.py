@@ -3,8 +3,12 @@ from django.conf import settings
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse as r
 from django.contrib import auth
+
 from .forms import UserCreationForm, AuthenticationForm, LinkForm
 from .models import User, Link
+
+from .converter import base62
+
 import json
 
 def home(request):
@@ -91,13 +95,21 @@ def shorten(request,
         user = request.user if request.user.is_authenticated() else None
 
         if form.is_valid():
-            link, created = Link.objects.get_or_create(user=user, url=form.cleaned_data['url'])
-            return HttpResponse(json.dumps(link.to_json()), content_type='application/json')
+
+            link, created = Link.objects.get_or_create(user=user, url=form.cleaned_data.get('url'))
+
+            link_json = link.to_json()
+
+            link_json['created'] = created
+
+            return HttpResponse(json.dumps(link_json), content_type='application/json')
+
         return HttpResponse(json.dumps({ 'error' : form.errors }), content_type='application/json')
 
 def redirect(request, id):
     """
     redirect -
     """
-    print id
+    print base62.to_decimal(id)
+
     return HttpResponseRedirect(r('core:home'))
