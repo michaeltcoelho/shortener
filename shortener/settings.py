@@ -10,23 +10,25 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-BASE_URL = 'http://localhost:8000/'
+BASE_URL = 'https://upurlshortener.herokuapp.com/'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '^v)ojh^jt0q95x#&-i*7c8n6icvsrid5krv+^z3rplpzc!64ef'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = [ 'localhost', ]
+ALLOWED_HOSTS = [ 'localhost', 'herokuapp.com' ]
 
 # Application User
 
@@ -75,11 +77,15 @@ WSGI_APPLICATION = 'shortener.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(default='sqlite:///' + os.path.join(BASE_DIR, "db.sqlite3"))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
