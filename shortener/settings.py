@@ -24,11 +24,11 @@ BASE_URL = 'https://upurlshortener.herokuapp.com/'
 SECRET_KEY = '^v)ojh^jt0q95x#&-i*7c8n6icvsrid5krv+^z3rplpzc!64ef'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = [ 'localhost', 'herokuapp.com' ]
+ALLOWED_HOSTS = [ '*', ]
 
 # Application User
 
