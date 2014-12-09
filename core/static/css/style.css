@@ -75,7 +75,7 @@ a {
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
       border-radius: 4px;
-      border: 1px solid transparent;
+      border: 3px solid #2969B0;
       margin-top: 10px;
       -webkit-transition: all 0.2s; }
       #shortener-form > div:first-child > input:focus {
@@ -86,7 +86,7 @@ a {
       position: relative;
       top: 31px;
       margin-left: 10px;
-      padding: 0.899em;
+      padding: 1.050em;
       width: 100%; }
 
 #shortener-content {
@@ -172,7 +172,14 @@ a {
       padding: 10px 10px;
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
-      border-radius: 4px; }
+      border-radius: 4px;
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      transition: all 0.2s; }
+      .menu-list > li a:hover {
+        background-color: #2969B0;
+        border-bottom: 3px solid #FCCD1B;
+        color: #FCCD1B; }
 
 .btn {
   background-color: #FCCD1B;
@@ -182,7 +189,14 @@ a {
   color: #2969B0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px; }
+  border-radius: 4px;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s; }
+  .btn:hover {
+    background-color: #2969B0;
+    border-bottom: 3px solid #FCCD1B;
+    color: #FCCD1B; }
   .btn:focus {
     outline: 0; }
   .btn.btn-white {
@@ -206,7 +220,10 @@ a {
     vertical-align: middle; }
     .table tbody tr {
       display: table-row;
-      border-bottom: 1px solid #FCCD1B; }
+      border-bottom: 1px solid #FCCD1B;
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      transition: all 0.2s; }
       .table tbody tr td {
         line-height: 1.42857143;
         padding: 12px; }

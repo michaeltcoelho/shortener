@@ -13,3 +13,9 @@
        -moz-box-shadow: $shadow;
             box-shadow: $shadow;
 }
+
+@mixin transition($prop) {
+    -webkit-transition: $prop;
+       -moz-transition: $prop;
+            transition: $prop;
+}

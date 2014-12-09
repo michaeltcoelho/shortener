@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-BASE_URL = 'https://upurlshortener.herokuapp.com/'
+BASE_URL = 'http://localhost:8000/'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '^v)ojh^jt0q95x#&-i*7c8n6icvsrid5krv+^z3rplpzc!64ef'
@@ -27,7 +27,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = [ '*', ]
+ALLOWED_HOSTS = [ 'localhost:8000', '.herokuapp.com' ]
 
 # Application User
 

@@ -40,7 +40,7 @@ class Link(models.Model):
     visits    = models.PositiveIntegerField(_('visitas'), default=0, db_index=True)
 
     class Meta:
-        ordering = ['visits']
+        ordering = ['-visits']
 
     def __unicode__(self):
         return '%s - %s' % (self.url, self.to_base62(), )

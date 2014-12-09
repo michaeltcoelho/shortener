@@ -3,6 +3,7 @@ from django.test import TestCase, Client
 from django.core.urlresolvers import reverse as r
 from core.forms import UserCreationForm, AuthenticationForm
 from core.models import Link
+from django.conf import settings
 
 import json
 
@@ -75,9 +76,9 @@ class LoginTest(TestCase):
         form = self.resp.context['form']
         self.assertIsInstance(form, AuthenticationForm)
 
-class ShortenitTest(TestCase):
+class ShortenTest(TestCase):
     """
-    ShortenitTest -
+    ShortenTest -
     """
     def setUp(self):
         self.link = Link(user=None, url='http://michael.tcoelho.github.io/')
@@ -100,7 +101,7 @@ class ShortenitTest(TestCase):
         data   = { 'url': 'www.google.com' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
 
-        resp   = self.client.get(r('core:shorten'), data=data, **kwargs)
+        resp   = client.get(r('core:shorten'), data=data, **kwargs)
 
         o = json.loads(resp.content, encoding='utf8')
 
@@ -113,7 +114,7 @@ class ShortenitTest(TestCase):
         data   = { 'url': 'www.#$$%$#$.com' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
 
-        resp   = self.client.get(r('core:shorten'), data=data, **kwargs)
+        resp   = client.get(r('core:shorten'), data=data, **kwargs)
 
         o = json.loads(resp.content, encoding='utf8')
 
@@ -126,7 +127,7 @@ class ShortenitTest(TestCase):
         data   = { 'url': '' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
 
-        resp   = self.client.get(r('core:shorten'), data=data, **kwargs)
+        resp   = client.get(r('core:shorten'), data=data, **kwargs)
 
         o = json.loads(resp.content, encoding='utf8')
 
@@ -139,6 +140,9 @@ class ShortenitTest(TestCase):
         """
         self.link.save()
 
+        url = {}
+        url['shortened_url'] = '{0}{1}'.format(settings.BASE_URL, 1)
+
         data   = { 'url': 'http://michael.tcoelho.github.io' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
 
@@ -146,4 +150,27 @@ class ShortenitTest(TestCase):
 
         o = json.loads(resp.content, encoding='utf8')
 
-        self.assertDictEqual(self.link.to_json(), o)
+        self.assertDictContainsSubset(url, o)
+
+class RedirectTest(TestCase):
+    """
+    RedirectTest -
+    """
+    def setUp(self):
+        Link.objects.create(user=None, url='http://www.google.com')
+
+    def test_redirect_success(self):
+        """
+        Should return status code 301
+        """
+        resp = client.get(r('core:redirect', args=[1, ]))
+
+        self.assertEqual(301, resp.status_code)
+
+    def test_redirect_404(self):
+        """
+        Should return status code 404
+        """
+        resp = client.get(r('core:redirect', args=[0, ]))
+
+        self.assertEqual(404, resp.status_code)

@@ -1,6 +1,8 @@
+#encoding:utf-8
 from django.shortcuts import render
 from django.conf import settings
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import (HttpResponseRedirect, HttpResponse,
+                         Http404, HttpResponsePermanentRedirect)
 from django.core.urlresolvers import reverse as r
 from django.contrib import auth
 
@@ -108,8 +110,16 @@ def shorten(request,
 
 def redirect(request, id):
     """
-    redirect -
+    redirect - redirect the user permanently to the original link
     """
-    print base62.to_decimal(id)
+    id = base62.to_decimal(id)
 
-    return HttpResponseRedirect(r('core:home'))
+    try:
+        link = Link.objects.get(id=id)
+    except Link.DoesNotExist:
+        raise Http404()
+
+    link.visits += 1
+    link.save()
+
+    return HttpResponsePermanentRedirect(link.url)
