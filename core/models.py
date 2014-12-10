@@ -32,9 +32,9 @@ class User(AbstractBaseUser):
 
 class Link(models.Model):
     """
-    Link is the link
+    Link is the user link to shorten it
     """
-    user      = models.ForeignKey(User, null=True, blank=True, related_name='user_link')
+    user      = models.ManyToManyField(User)
     url       = models.URLField(_('url'), max_length=255)
     submitted = models.DateTimeField(_('data'), auto_now_add=True)
     visits    = models.PositiveIntegerField(_('visitas'), default=0, db_index=True)

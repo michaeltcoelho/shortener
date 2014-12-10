@@ -33,7 +33,8 @@
                     <table id="link-table" class="table">
                     <thead>
                         <tr>
-                            <th class="text-left">URL</th>
+                            <th class="text-left">ORIGINAL</th>
+                            <th class="text-left">ENCURTADA</th>
                             <th class="text-left">DATA</th>
                             <th class="text-center">CLICKS</th>
                         </tr>
@@ -42,10 +43,13 @@
                         {% for link in links %}
                             <tr>
                                 <td class="text-left">
-                                    <a href="{{ link.get_absolute_url }}" class="link">{{base_url}}{{link.to_base62}}</a>
+                                    <a href="{{ link.url }}" class="link">{{link.url}}</a>
+                                </td>
+                                <td class="text-left">
+                                    <a href="{{ link.get_absolute_url }}" class="link">{{link.get_shortened_url}}</a>
                                 </td>
                                 <td class="text-align">
-                                    {{link.submitted | date}}
+                                    {{link.submitted | date:'d/m/Y H:i'}}
                                 </td>
                                 <td class="text-center">
                                     {{link.visits}}

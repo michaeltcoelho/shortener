@@ -98,27 +98,32 @@ a {
 #signup-form {
   width: 60%; }
 
-#url-shortened {
-  display: block;
-  position: relative;
+#shortened {
   float: left;
-  width: 100%;
-  padding: 0 0 2em 1em; }
-  #url-shortened > div {
-    background-color: #FCCD1B;
+  width: 100%; }
+  #shortened > #url-shortened {
     display: block;
+    position: relative;
     float: left;
-    padding: 1em;
-    color: #fff;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px; }
-    #url-shortened > div span {
-      display: block; }
-    #url-shortened > div a {
+    width: 100%;
+    padding: 0 1em 2em 1em; }
+    #shortened > #url-shortened > .url {
+      background-color: #FCCD1B;
+      display: block;
+      float: left;
+      width: 100%;
+      padding: 1em;
       color: #fff;
-      font-weight: bold;
-      font-size: 1.2em; }
+      text-align: center;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px; }
+      #shortened > #url-shortened > .url span {
+        display: block; }
+      #shortened > #url-shortened > .url a {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.2em; }
 
 #footer {
   padding: 4em; }
@@ -214,6 +219,7 @@ a {
     .table thead tr {
       display: table-row; }
       .table thead tr th {
+        display: table-cell;
         padding: 8px; }
   .table tbody {
     display: table-row-group;
@@ -225,6 +231,7 @@ a {
       -moz-transition: all 0.2s;
       transition: all 0.2s; }
       .table tbody tr td {
+        display: table-cell;
         line-height: 1.42857143;
         padding: 12px; }
       .table tbody tr:hover {
@@ -269,6 +276,9 @@ a {
 .text-center {
   text-align: center; }
 
+.text-justify {
+  text-align: justify; }
+
 .text-left {
   text-align: left; }
 
@@ -281,13 +291,17 @@ a {
 /*
     responsive
 */
-@media (min-width: 768px) {
+@media screen and (max-width: 480px) {
+  table {
+    overflow-x: auto;
+    display: block; } }
+@media screen and (min-width: 768px) {
   .container {
     width: 750px; } }
-@media only screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .container {
     width: 970px; } }
-@media only screen and (min-width: 1224px) {
+@media screen and (min-width: 1224px) {
   .container {
     width: 1170px; } }
 
