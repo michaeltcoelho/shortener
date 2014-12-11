@@ -39,7 +39,6 @@
         <option value="$PROJECT_DIR$/core/static/assets/css/normalize.css" />
         <option value="$PROJECT_DIR$/core/static/assets/css/style.css" />
         <option value="$PROJECT_DIR$/npm-debug.log" />
-        <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/core/static/assets/sass/partials/_layout.scss" />
         <option value="$PROJECT_DIR$/core/static/assets/sass/partials/_mixins.scss" />
         <option value="$PROJECT_DIR$/core/static/assets/sass/partials/_utils.scss" />
@@ -79,6 +78,7 @@
         <option value="$PROJECT_DIR$/shortener/settings.py" />
         <option value="$PROJECT_DIR$/shortener/wsgi.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/bower.json" />
       </list>
     </option>
   </component>
@@ -883,14 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="754">
-          <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shortener/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22633745" vertical-offset="0" max-vertical-offset="729">
@@ -907,10 +899,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="754">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2387268" vertical-offset="0" max-vertical-offset="754">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0198939" vertical-offset="0" max-vertical-offset="754">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
           <folding />
         </state>
       </provider>
