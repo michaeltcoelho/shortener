@@ -34,7 +34,7 @@ class Link(models.Model):
     """
     Link is the user link to shorten it
     """
-    user      = models.ManyToManyField(User)
+    user      = models.ManyToManyField(User, blank=True, null=True, default=None)
     url       = models.URLField(_('url'), max_length=255)
     submitted = models.DateTimeField(_('data'), auto_now_add=True)
     visits    = models.PositiveIntegerField(_('visitas'), default=0, db_index=True)
@@ -56,7 +56,6 @@ class Link(models.Model):
 
     def to_json(self):
         return {
-            'user' : self.user.email if self.user else None,
             'url'  : self.url,
             'submitted' : self.submitted.strftime('%d/%m/%Y %H:%m'),
             'visits' : self.visits,

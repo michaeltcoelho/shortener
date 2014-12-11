@@ -26,12 +26,12 @@ $white: #ffffff;
 
 html,
 body {
+    color: #6E6E6E;
+    height: 100%;
     font: {
         family: $font;
         size: 100%;
     }
-    color: #6E6E6E;
-    height: 100%;
 }
 
 a {
@@ -48,6 +48,18 @@ a {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+
+    @media screen and (min-width: 768px) {
+        width: 750px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        width: 970px;
+    }
+
+    @media screen and (min-width: 1224px) {
+        width: 1170px;
+    }
 }
 
 
@@ -300,8 +312,7 @@ a {
         }
     }
 
-    tbody
-    {
+    tbody {
         display: table-row-group;
         vertical-align: middle;
 
@@ -322,10 +333,19 @@ a {
             }
         }
     }
+
+    @media screen and (max-width: 480px) {
+        overflow-x: auto;
+        display: block;
+    }
+
+    @media screen and (max-width: 640px) {
+        overflow-x: auto;
+        display: block;
+    }
 }
 
-.panel
-{
+.panel {
     border: 1px solid $yellow;
     @include radius(4px);
 
@@ -388,38 +408,4 @@ a {
 
 .field-error {
     border: 3px solid $yellow !important;
-}
-
-/*
-    responsive
-*/
-
-
-@media screen and (max-width: 480px) {
-
-	table {
-		overflow-x: auto;
-		display: block;
-	}
-}
-
-@media screen and (min-width: 768px) {
-
-    .container {
-        width: 750px;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-
-    .container {
-        width: 970px;
-    }
-}
-
-@media screen and (min-width: 1224px) {
-
-    .container {
-        width: 1170px;
-    }
 }

@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, url, include
 
+
+handler404 = 'core.views.error404'
+
 urlpatterns = patterns('core.views',
     url(r'^$', 'home', name='home'),
     url(r'^login/$', 'login', name='login'),

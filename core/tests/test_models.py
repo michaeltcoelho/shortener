@@ -62,15 +62,13 @@ class LinkModelTest(TestCase):
     """
     def setUp(self):
         self.user = User.objects.create_user(name='michael', email='michael.tcoelho@gmail.com', password='123')
-        self.link = Link(url='www.google.com')
+        self.link = Link.objects.create(url='www.google.com')
 
     def test_link_creation(self):
         """
         link creation to an user
         """
-        self.user.save()
-
-        self.link.user = self.user
+        self.link.user.add(self.user)
         self.link.save()
 
         u = '%s - %s' % (self.link.url, self.link.to_base62())

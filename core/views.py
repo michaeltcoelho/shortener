@@ -71,7 +71,9 @@ def signup(request,
 
         if form.is_valid():
 
-            User.objects.create_user(name=data.get('name'), email=data.get('email'), password=data.get('password'))
+            User.objects.create_user(name=data.get('name'),
+                                     email=data.get('email'),
+                                     password=data.get('password'))
 
             user = auth.authenticate(email=data.get('email'), password=data.get('password'))
 
@@ -95,18 +97,39 @@ def shorten(request,
         form = link_form(data)
 
         user = request.user if request.user.is_authenticated() else None
+        created = False
 
         if form.is_valid():
 
-            link, created = Link.objects.get_or_create(user=user, url=form.cleaned_data.get('url'))
+            try:
+
+                link = Link.objects.get(url=form.cleaned_data.get('url'))
+
+                if user is not None and link.user is not user:
+                    link.user.add(user)
+                    link.save()
+
+            except Link.DoesNotExist:
+
+                link, created = Link.objects.create(url=form.cleaned_data.get('url')), True
+
+                if user:
+                    link.user.add(user)
+                    link.save()
 
             link_json = link.to_json()
 
             link_json['created'] = created
 
-            return HttpResponse(json.dumps(link_json), content_type='application/json')
+            return HttpResponse(
+                json.dumps(link_json),
+                content_type='application/json'
+            )
 
-        return HttpResponse(json.dumps({ 'error' : form.errors }), content_type='application/json')
+        return HttpResponse(
+            json.dumps({ 'error' : form.errors }),
+            content_type='application/json'
+        )
 
 def redirect(request, id):
     """
@@ -123,3 +146,9 @@ def redirect(request, id):
     link.save()
 
     return HttpResponsePermanentRedirect(link.url)
+
+def error404(request):
+    """
+    error404 - show 404 custom error page
+    """
+    pass

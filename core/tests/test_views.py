@@ -81,7 +81,7 @@ class ShortenTest(TestCase):
     ShortenTest -
     """
     def setUp(self):
-        self.link = Link(user=None, url='http://michael.tcoelho.github.io/')
+        self.link = Link(url="http://www.globoesporte.globo.com/")
 
     def test_get(self):
         """
@@ -143,7 +143,7 @@ class ShortenTest(TestCase):
         url = {}
         url['shortened_url'] = '{0}{1}'.format(settings.BASE_URL, 1)
 
-        data   = { 'url': 'http://michael.tcoelho.github.io' }
+        data   = { 'url': 'www.globoesporte.globo.com' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
 
         resp   = self.client.get(r('core:shorten'), data=data, **kwargs)
@@ -157,7 +157,7 @@ class RedirectTest(TestCase):
     RedirectTest -
     """
     def setUp(self):
-        Link.objects.create(user=None, url='http://www.google.com')
+        Link.objects.create(url='http://www.google.com')
 
     def test_redirect_success(self):
         """
