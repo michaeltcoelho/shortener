@@ -1,11 +1,11 @@
 #coding: utf-8
 import string
 
-__all__ = [ 'base62', ]
+__all__ = [ 'baseBin', 'baseOct', 'baseHex', 'base62' ]
 
 class Converter(object):
     """
-    Converter - Convert from base 10 integer number to base x string back again
+    Converter - Convert from base 10 integer number to base 62 string back again
     """
     def __init__(self, digits):
         self.digits = digits
@@ -13,14 +13,12 @@ class Converter(object):
 
     def from_decimal(self, number):
         """
-        from_decimal() - convert from base 10 integer numbers to base x strings
+        from_decimal() - convert from base 10 integer numbers to base 62 strings
 
         :param number: an integer base 10
         """
-        if number < 0:
-            number, negative = -number, 1
-        else:
-            negative = 0
+        if not isinstance(number, (int, long)) and number < 0:
+            raise ValueError("The number must be an positive integer!")
 
         encoded = ''
 
@@ -30,35 +28,20 @@ class Converter(object):
 
         encoded = self.digits[number] + encoded
 
-        if negative:
-            encoded = '-' + encoded
         return encoded
 
     def to_decimal(self, s):
         """
-        to_decimal() - convert from base x strings to base 10 integer numbers
+        to_decimal() - convert from base 62 strings to base 10 integer numbers
 
         :param s: a string base x
         """
-        s = str(s)
-
-        if s[0] == '-':
-            s, negative = s[1:], 1
-        else:
-            negative = 0
-
         decoded = 0
-        m = 1
-
-        while len(s) > 0:
-            decoded += m * self.digits.index(s[-1:])
-            m = m * self.length
-            s = s[:-1]
-
-        if negative:
-            decoded = -decoded
+        for char in str(s):
+            decoded = decoded * self.length + self.digits.index(char)
         return decoded
 
-ascii62 = string.digits + string.letters
-
-base62 = Converter(ascii62)
+baseBin = Converter('01')
+baseOct = Converter('01234567')
+baseHex = Converter('0123456789ABCDEF')
+base62  = Converter(string.digits + string.letters)

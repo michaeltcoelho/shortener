@@ -151,4 +151,4 @@ def error404(request):
     """
     error404 - show 404 custom error page
     """
-    pass
+    return render(request, '404.html')

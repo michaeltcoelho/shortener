@@ -10,5 +10,14 @@ class ConverterTest(unittest.TestCase):
             after = converter.to_decimal(converter.from_decimal(before))
             self.assertEqual(before, after)
 
-    def test_converter(self):
+    def test_binary_converter(self):
+        self._test_converter(converter.baseBin)
+
+    def test_octal_converter(self):
+        self._test_converter(converter.baseOct)
+
+    def test_hexadecimal_converter(self):
+        self._test_converter(converter.baseHex)
+
+    def test_62_converter(self):
         self._test_converter(converter.base62)
