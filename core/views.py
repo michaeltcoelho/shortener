@@ -108,7 +108,6 @@ def shorten(request,
                     link.save()
 
             except Link.DoesNotExist:
-
                 link = Link.objects.create(url=form.cleaned_data.get('url'))
 
                 if user:
