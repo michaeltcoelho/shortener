@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.pyc
+*.map
 
 .DS_Store
 
@@ -25,3 +26,5 @@ local.py
 
 # staticfiles
 staticfiles/
+node_modules/
+.sass-cache/

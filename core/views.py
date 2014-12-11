@@ -97,12 +97,10 @@ def shorten(request,
         form = link_form(data)
 
         user = request.user if request.user.is_authenticated() else None
-        created = False
 
         if form.is_valid():
 
             try:
-
                 link = Link.objects.get(url=form.cleaned_data.get('url'))
 
                 if user is not None and link.user is not user:
@@ -111,18 +109,14 @@ def shorten(request,
 
             except Link.DoesNotExist:
 
-                link, created = Link.objects.create(url=form.cleaned_data.get('url')), True
+                link = Link.objects.create(url=form.cleaned_data.get('url'))
 
                 if user:
                     link.user.add(user)
                     link.save()
 
-            link_json = link.to_json()
-
-            link_json['created'] = created
-
             return HttpResponse(
-                json.dumps(link_json),
+                json.dumps(link.to_json()),
                 content_type='application/json'
             )
 

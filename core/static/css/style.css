@@ -102,7 +102,8 @@ a {
   display: block;
   float: left;
   width: 100%;
-  margin-top: 1em; }
+  margin-top: 1em;
+  margin-bottom: 1em; }
 
 #signup-form {
   width: 60%; }
@@ -135,7 +136,13 @@ a {
         font-size: 1.2em; }
 
 #footer {
-  padding: 4em; }
+  width: 100%;
+  float: left; }
+  #footer .container {
+    padding: 4em; }
+  #footer .author {
+    text-align: center;
+    font-size: 14px; }
 
 /*
     components

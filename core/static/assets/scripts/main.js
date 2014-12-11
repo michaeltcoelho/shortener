@@ -23,19 +23,17 @@ var shortener = {
 
         if (url)
         {
-            $.get('/shorten/',
-                  {
+            $.get('/shorten/', {
                     'url' :  url
-                  }, function(data)
-                  {
+                  }, function(data) {
+
                     if (data.error) {
                         toastr.error(data.error.url, 'Informação incorreta...');
                     }
-                    else
-                    {
+                    else {
                         shortener.el.content.html(shortener.html(data));
 
-                        if(data.created)
+                        if(shortener.el.table.find('td[data-url="' + data.url + '"]').length == 0)
                             shortener.el.table.append(shortener.row(data));
                     }
                 }
@@ -59,7 +57,8 @@ var shortener = {
     row: function (link) {
         return $(
         '<tr>' +
-            '<td class="text-left"><a href="' + link.shortened_url + '" class="link">' + link.shortened_url + '</a></td>' +
+            '<td data-url="' + link.url + '" class="text-left"><a href="' + link.url + '" class="link" target="_blank">' + link.url + '</a></td>' +
+            '<td class="text-left"><a href="' + link.shortened_url + '" class="link" target="_blank">' + link.shortened_url + '</a></td>' +
             '<td class="text-align">' + link.submitted + '</td>' +
             '<td class="text-center">' + link.visits + '</td>' +
         '</tr>');

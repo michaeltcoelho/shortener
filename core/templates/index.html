@@ -42,11 +42,11 @@
                     <tbody>
                         {% for link in links %}
                             <tr>
-                                <td class="text-left">
-                                    <a href="{{ link.url }}" class="link">{{link.url}}</a>
+                                <td class="text-left" data-url="{{link.url}}">
+                                    <a href="{{ link.url }}" class="link" target="_blank">{{link.url}}</a>
                                 </td>
                                 <td class="text-left">
-                                    <a href="{{ link.get_absolute_url }}" class="link">{{link.get_shortened_url}}</a>
+                                    <a href="{{ link.get_absolute_url }}" target="_blank" class="link">{{link.get_shortened_url}}</a>
                                 </td>
                                 <td class="text-align">
                                     {{link.submitted | date:'d/m/Y H:i'}}

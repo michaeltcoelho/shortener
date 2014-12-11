@@ -146,6 +146,7 @@ a {
     float: left;
     width: 100%;
     margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 #signup-form {
@@ -189,8 +190,17 @@ a {
 }
 
 #footer {
-    padding: 4em;
+    width: 100%;
+    float: left;
+    .container {
+        padding: 4em;
+    }
+    .author {
+        text-align: center;
+        font-size: 14px;
+    }
 }
+
 
 /*
     components
