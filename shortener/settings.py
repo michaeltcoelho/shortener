@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -23,9 +24,9 @@ BASE_URL = 'http://localhost:8000/'
 SECRET_KEY = '^v)ojh^jt0q95x#&-i*7c8n6icvsrid5krv+^z3rplpzc!64ef'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = [ 'localhost:8000', '.herokuapp.com' ]
 
@@ -76,12 +77,14 @@ WSGI_APPLICATION = 'shortener.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+DATABASES ={ 'default' :  dj_database_url.config(default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')) }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
