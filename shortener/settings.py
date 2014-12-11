@@ -28,7 +28,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = [ 'localhost:8000', ]
+ALLOWED_HOSTS = [ '*', 'localhost:8000', ]
 
 # Application User
 
@@ -41,8 +41,6 @@ AUTHENTICATION_BACKENDS = (
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',

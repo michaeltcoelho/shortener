@@ -139,6 +139,26 @@ a {
             width: 100%;
         }
     }
+
+    @media screen and (max-width: 480px) {
+
+        padding-left: 1.5em;
+
+        > div:first-child {
+            width: 100%;
+        }
+
+        > div:last-child {
+            float: left;
+            width: 100%;
+            button {
+                top: 10px;
+                position: relative;
+                margin-left: 0px;
+                width: 100%;
+            }
+        }
+    }
 }
 
 #shortener-content {
@@ -151,6 +171,14 @@ a {
 
 #signup-form {
     width: 60%;
+
+    @media screen and (max-width: 480px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 640px) {
+        width: 100%;
+    }
 }
 
 #shortened {
@@ -198,6 +226,36 @@ a {
     .author {
         text-align: center;
         font-size: 14px;
+    }
+}
+
+
+.error
+{
+    padding: 2em 5em;
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: inherit;
+    background-color: #eee;
+    text-align: center;
+    @include radius(4px);
+
+    h1 {
+      color: inherit;
+    }
+
+    p {
+      margin-bottom: 50px;
+      font-size: 21px;
+      font-weight: 200;
+    }
+
+    @media screen and (max-width: 480px) {
+        font-size: 10px;
+    }
+
+    @media screen and (max-width: 640px) {
+        font-size: 15px;
     }
 }
 
@@ -274,6 +332,13 @@ a {
                 border-bottom: 3px solid $yellow;
                 color: $yellow;
             }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+
+        li {
+         font-size: 10px;
         }
     }
 }

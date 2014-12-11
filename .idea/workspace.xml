@@ -44,7 +44,6 @@
         <option value="$PROJECT_DIR$/core/static/assets/sass/partials/_utils.scss" />
         <option value="$PROJECT_DIR$/core/static/css/mixins.scss" />
         <option value="$PROJECT_DIR$/core/static/css/_mixins.scss" />
-        <option value="$PROJECT_DIR$/shortener/urls.py" />
         <option value="$PROJECT_DIR$/core/backends.py" />
         <option value="$PROJECT_DIR$/core/templates/register/login.html" />
         <option value="$PROJECT_DIR$/core/response.py" />
@@ -63,8 +62,6 @@
         <option value="$PROJECT_DIR$/core/tests/test_models.py" />
         <option value="$PROJECT_DIR$/core/models.py" />
         <option value="$PROJECT_DIR$/core/tests/test_views.py" />
-        <option value="$PROJECT_DIR$/core/templates/404.html" />
-        <option value="$PROJECT_DIR$/core/urls.py" />
         <option value="$PROJECT_DIR$/.bowerrc" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
@@ -72,13 +69,16 @@
         <option value="$PROJECT_DIR$/core/tests/test_shortener.py" />
         <option value="$PROJECT_DIR$/core/templates/index.html" />
         <option value="$PROJECT_DIR$/core/static/assets/scripts/main.js" />
-        <option value="$PROJECT_DIR$/core/static/assets/sass/style.scss" />
         <option value="$PROJECT_DIR$/core/templates/base.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/shortener/wsgi.py" />
         <option value="$PROJECT_DIR$/core/views.py" />
+        <option value="$PROJECT_DIR$/shortener/urls.py" />
         <option value="$PROJECT_DIR$/shortener/settings.py" />
+        <option value="$PROJECT_DIR$/core/templates/404.html" />
+        <option value="$PROJECT_DIR$/core/static/assets/sass/style.scss" />
+        <option value="$PROJECT_DIR$/core/urls.py" />
       </list>
     </option>
   </component>
@@ -119,6 +119,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="shortener" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shortener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shortener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -536,27 +546,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../agoracasei/agoracasei/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29288703" vertical-offset="420" max-vertical-offset="1755">
-          <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../agoracasei/agoracasei/settings/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49734747" vertical-offset="645" max-vertical-offset="1590">
-          <caret line="70" column="1" selection-start-line="67" selection-start-column="0" selection-end-line="70" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/envs/agoracasei/lib/python2.7/site-packages/django/forms/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41246685" vertical-offset="4129" max-vertical-offset="8640">
-          <caret line="310" column="8" selection-start-line="310" selection-start-column="8" selection-end-line="310" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Documents/envs/agoracasei/lib/python2.7/site-packages/django/db/models/aggregates.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33730158" vertical-offset="0" max-vertical-offset="1290">
@@ -599,24 +588,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/templates/register/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2260274" vertical-offset="0" max-vertical-offset="730">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.6551723" vertical-offset="3026" max-vertical-offset="3780">
           <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/static/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="741">
-          <caret line="0" column="32" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -713,13 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0596817" vertical-offset="0" max-vertical-offset="754">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.bowerrc">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0198939" vertical-offset="0" max-vertical-offset="754">
@@ -769,14 +737,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7808219" vertical-offset="0" max-vertical-offset="825">
           <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/templates/404.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14383562" vertical-offset="0" max-vertical-offset="730">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -831,14 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/static/assets/sass/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.198939" vertical-offset="2655" max-vertical-offset="6390">
-          <caret line="187" column="9" selection-start-line="187" selection-start-column="9" selection-end-line="187" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
@@ -879,14 +831,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/debug.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.45748988" vertical-offset="339" max-vertical-offset="1080">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.0092838" vertical-offset="0" max-vertical-offset="2100">
@@ -895,10 +839,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/staticfiles/assets/scripts/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1140">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/static/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="741">
+          <caret line="0" column="32" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/shortener/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4376658" vertical-offset="0" max-vertical-offset="1725">
-          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.4429708" vertical-offset="116" max-vertical-offset="1695">
+          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shortener/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0596817" vertical-offset="0" max-vertical-offset="754">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/templates/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="330">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/templates/register/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14383562" vertical-offset="0" max-vertical-offset="730">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/static/assets/sass/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3633952" vertical-offset="1571" max-vertical-offset="7365">
+          <caret line="123" column="29" selection-start-line="123" selection-start-column="29" selection-end-line="123" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2387268" vertical-offset="0" max-vertical-offset="754">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>

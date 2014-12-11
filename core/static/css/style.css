@@ -97,6 +97,19 @@ a {
       margin-left: 10px;
       padding: 1.050em;
       width: 100%; }
+  @media screen and (max-width: 480px) {
+    #shortener-form {
+      padding-left: 1.5em; }
+      #shortener-form > div:first-child {
+        width: 100%; }
+      #shortener-form > div:last-child {
+        float: left;
+        width: 100%; }
+        #shortener-form > div:last-child button {
+          top: 10px;
+          position: relative;
+          margin-left: 0px;
+          width: 100%; } }
 
 #shortener-content {
   display: block;
@@ -107,6 +120,12 @@ a {
 
 #signup-form {
   width: 60%; }
+  @media screen and (max-width: 480px) {
+    #signup-form {
+      width: 100%; } }
+  @media screen and (max-width: 640px) {
+    #signup-form {
+      width: 100%; } }
 
 #shortened {
   float: left;
@@ -143,6 +162,29 @@ a {
   #footer .author {
     text-align: center;
     font-size: 14px; }
+
+.error {
+  padding: 2em 5em;
+  margin-bottom: 30px;
+  font-size: 20px;
+  color: inherit;
+  background-color: #eee;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
+  .error h1 {
+    color: inherit; }
+  .error p {
+    margin-bottom: 50px;
+    font-size: 21px;
+    font-weight: 200; }
+  @media screen and (max-width: 480px) {
+    .error {
+      font-size: 10px; } }
+  @media screen and (max-width: 640px) {
+    .error {
+      font-size: 15px; } }
 
 /*
     components
@@ -201,6 +243,9 @@ a {
         background-color: #2969B0;
         border-bottom: 3px solid #FCCD1B;
         color: #FCCD1B; }
+  @media screen and (max-width: 480px) {
+    .menu-list li {
+      font-size: 10px; } }
 
 .btn {
   background-color: #FCCD1B;
