@@ -1,5 +1,6 @@
 #encoding:utf-8
-from setuptools import setup, find_packages
+from distutils.core import setup
+from setuptools import find_packages
 
 
 REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()
@@ -18,4 +19,5 @@ setup(name="shortener",
       long_description=long_description,
       download_url="https://github.com/michaeltcoelho/shortener/tarball/master",
       install_requires=REQUIREMENTS,
-      include_package_data=True,)
+      include_package_data=True,
+      zip_safe=False)
