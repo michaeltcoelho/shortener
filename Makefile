@@ -10,6 +10,8 @@ db:
 install: clean
 	@pip install -r requirements.txt
 	@python ./manage.py migrate
+	@npm install
+	@bower install
 
 .PHONY: run
 run:
