@@ -8,7 +8,7 @@ REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()
 
 long_description = open("README.md").read()
 
-setup(name="shortener",
+setup(name="Shortener",
       version="0.0.1",
       license="MIT",
       description = "An url shortener",

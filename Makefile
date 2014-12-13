@@ -17,6 +17,7 @@ dev_install: clean
 install: clean
 	@pip install -r requirements.txt
 	@python ./manage.py migrate
+	@bower install
 
 .PHONY: run
 run:
