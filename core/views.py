@@ -33,7 +33,7 @@ def login(request,
           login_form=AuthenticationForm,
           template='register/login.html'):
     """
-    login - login the user on app
+    login - login the user
     """
     if request.method == "POST":
 
@@ -62,7 +62,7 @@ def signup(request,
            signup_form=UserCreationForm,
            template='register/signup.html'):
     """
-    signup - sign up an user on web app
+    signup - enrolls a new user
     """
     if request.method == "POST":
 

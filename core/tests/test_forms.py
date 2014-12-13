@@ -4,8 +4,6 @@ from django.core.urlresolvers import reverse as r
 from core.models import User, Link
 from core.forms import UserCreationForm, AuthenticationForm, LinkForm
 
-client = Client()
-
 class SignupFormTest(TestCase):
     """
     SignupFormTest -

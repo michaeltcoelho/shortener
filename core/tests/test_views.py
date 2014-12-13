@@ -47,13 +47,15 @@ class SignupTest(TestCase):
 
     def test_has_form(self):
         """
-        must have the register/signup form
+        must have the UserCreationForm form in the template
         """
         form = self.resp.context['form']
         self.assertIsInstance(form, UserCreationForm)
 
 class LoginTest(TestCase):
-
+    """
+    LoginTest - login view tests
+    """
     def setUp(self):
         self.resp = client.get(r('core:login'))
 
@@ -71,14 +73,14 @@ class LoginTest(TestCase):
 
     def test_has_form(self):
         """
-        must have the login form
+        Must have the AuthenticationForm in the template
         """
         form = self.resp.context['form']
         self.assertIsInstance(form, AuthenticationForm)
 
 class ShortenTest(TestCase):
     """
-    ShortenTest -
+    ShortenTest - shorten view tests
     """
     def setUp(self):
         self.link = Link(url="http://www.globoesporte.globo.com/")
@@ -96,7 +98,7 @@ class ShortenTest(TestCase):
 
     def test_url_shortened_valid_url(self):
         """
-        Valid URL, must
+        Should not contain an `error` in the response
         """
         data   = { 'url': 'www.google.com' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
@@ -109,7 +111,7 @@ class ShortenTest(TestCase):
 
     def test_url_shortened_invalid_url(self):
         """
-        Invalid URL
+        The url must be invalid
         """
         data   = { 'url': 'www.#$$%$#$.com' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
@@ -135,7 +137,7 @@ class ShortenTest(TestCase):
 
     def test_url_shortened_must_be_unique(self):
         """
-        The url shortened must be an unique url, if the user to shorten the same url,
+        The url shortened must be an unique url, if the user to shorten the same url
         and it exists on database, must return it
         """
         self.link.save()
@@ -146,7 +148,7 @@ class ShortenTest(TestCase):
         data   = { 'url': 'www.globoesporte.globo.com' }
         kwargs = { 'HTTP_X_REQUESTED_WITH':'XMLHttpRequest' }
 
-        resp   = self.client.get(r('core:shorten'), data=data, **kwargs)
+        resp   = client.get(r('core:shorten'), data=data, **kwargs)
 
         o = json.loads(resp.content, encoding='utf8')
 
@@ -154,7 +156,7 @@ class ShortenTest(TestCase):
 
 class RedirectTest(TestCase):
     """
-    RedirectTest -
+    RedirectTest - redirect view tests
     """
     def setUp(self):
         Link.objects.create(url='http://www.google.com')
@@ -174,3 +176,16 @@ class RedirectTest(TestCase):
         resp = client.get(r('core:redirect', args=[0, ]))
 
         self.assertEqual(404, resp.status_code)
+
+class Error404Test(TestCase):
+    """
+    Error404Test - error404 view test
+    """
+    def setUp(self):
+        self.resp = client.get('core:redirect', args=[123, ])
+
+    def test_404_error(self):
+        """
+        Shoud return status code 404
+        """
+        self.assertEqual(404, self.resp.status_code)

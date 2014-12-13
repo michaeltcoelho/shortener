@@ -5,7 +5,7 @@ __all__ = [ 'baseBin', 'baseOct', 'baseHex', 'base62' ]
 
 class Converter(object):
     """
-    Converter - Convert from base 10 integer number to base 62 string back again
+    Converter - Convert from base 10 integer number to base x string back again
     """
     def __init__(self, digits):
         self.digits = digits
@@ -13,7 +13,7 @@ class Converter(object):
 
     def from_decimal(self, number):
         """
-        from_decimal() - convert from base 10 integer numbers to base 62 strings
+        from_decimal() - convert from base 10 integer numbers to base x strings
 
         :param number: an integer base 10
         """
@@ -32,7 +32,7 @@ class Converter(object):
 
     def to_decimal(self, s):
         """
-        to_decimal() - convert from base 62 strings to base 10 integer numbers
+        to_decimal() - convert from base x strings to base 10 integer numbers
 
         :param s: a string base x
         """

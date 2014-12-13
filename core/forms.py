@@ -5,7 +5,9 @@ from django.contrib.auth import get_user_model, authenticate
 from django.utils.translation import ugettext as _
 
 class UserCreationForm(forms.Form):
-
+    """
+    UserForm - Form to create a new user
+    """
     error_messages = {
         'password_match': _(u'Confirmar senha não confere com a senha informada!'),
         'name_exist' 	: _(u'O nome já existe, tente outro!'),
@@ -64,7 +66,9 @@ class UserCreationForm(forms.Form):
         return confirm_password
 
 class AuthenticationForm(forms.Form):
-
+    """
+    AuthenticationForm - Form to auth an user
+    """
     error_messages = {
         'invalid_login' : u'Usuário ou Senha inválido. Tente novamente!',
     }
@@ -96,6 +100,9 @@ class AuthenticationForm(forms.Form):
         return self.user
 
 class LinkForm(forms.ModelForm):
+    """
+    LinkForm - Form to create a new shortened url
+    """
     class Meta:
         model  = Link
         fields = ('url', )

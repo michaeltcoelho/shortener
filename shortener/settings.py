@@ -28,7 +28,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = [ '*', 'localhost:8000', ]
+ALLOWED_HOSTS = [ 'localhost:8000', ]
 
 # Application User
 

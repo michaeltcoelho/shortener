@@ -6,12 +6,17 @@ clean:
 db:
 	@python ./manage.py migrate
 
-.PHONY: install
-install: clean
+.PHONY: dev_install
+dev_install: clean
 	@pip install -r requirements.txt
 	@python ./manage.py migrate
 	@npm install
 	@bower install
+
+.PHONY: install
+install: clean
+	@pip install -r requirements.txt
+	@python ./manage.py migrate
 
 .PHONY: run
 run:
