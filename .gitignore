@@ -28,3 +28,4 @@ local.py
 staticfiles/
 node_modules/
 .sass-cache/
+core/static/assets/bower

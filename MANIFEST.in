@@ -1,5 +1,0 @@
-include core/templates *
-include requirements.txt
-recursive-include core/templates *
-recursive-include core/static *
-recursive-include shortener *.html *.css *.js *.txt

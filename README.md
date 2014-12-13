@@ -9,7 +9,7 @@ An url shortener built with Python 2.7.3 and Django 1.7.
 
 ### Install Dependencies
 
-Considering you already have enabled a virtualenv.
+Considering you already have created and enabled your virtualenv.
 
 `$ sudo nodejs nodejs-dev npm`
 
@@ -23,12 +23,14 @@ Clone the repository and install it
 
 `$ cd shortener`
 
-`$ python setyp.py install`
+`$ make install`
+
+### Test
+
+`$ make test`
 
 ### Run
 
 Seeing you have installed all dependencies and the shortener
 
-`$ python manage.py migrate`
-
-`$ python manage.py runserver`
+`$ make run`
