@@ -17,7 +17,7 @@ class Converter(object):
 
         :param number: an integer base 10
         """
-        if not isinstance(number, (int, long)) and number < 0:
+        if number < 0 or not isinstance(number, (int, long)):
             raise ValueError("The number must be an positive integer!")
 
         encoded = ''
