@@ -1,5 +1,5 @@
-from django.conf.urls import patterns, url, include
-
+#-*- coding: utf-8 -*-
+from django.conf.urls import patterns, url
 
 handler404 = 'core.views.error404'
 

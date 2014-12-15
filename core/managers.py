@@ -1,4 +1,4 @@
-#encoding:utf-8
+#-*- coding: utf-8 -*-
 from django.contrib.auth import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone

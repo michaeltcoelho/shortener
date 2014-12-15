@@ -1,4 +1,4 @@
-#encoding:utf-8
+#-*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.conf import settings
 from django.http import (HttpResponseRedirect, HttpResponse, Http404)

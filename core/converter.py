@@ -1,11 +1,15 @@
-#coding: utf-8
+#-*- coding: utf-8 -*-
 import string
 
 __all__ = [ 'baseBin', 'baseOct', 'baseHex', 'base62' ]
 
 class Converter(object):
     """
-    Converter - Convert from base 10 integer number to base x string back again
+    Converter - Convert from base 10 integer number to base x string back again.
+
+    OBS: This tiny library doesn't work with negative number yet.
+         I intend to implement more features like 2`s and 1`s complement.
+         Thanks!
     """
     def __init__(self, digits):
         self.digits = digits
@@ -17,7 +21,7 @@ class Converter(object):
 
         :param number: an integer base 10
         """
-        if number < 0 or not isinstance(number, (int, long)):
+        if number < 0:
             raise ValueError("The number must be an positive integer!")
 
         encoded = ''
