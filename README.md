@@ -1,6 +1,6 @@
 # Shortener
 
-An url shortener built with Python 2.7.3 and Django 1.7.
+An url shortener built with Python 2.7.6 and Django 1.7.
 
 ### Requirements
 
