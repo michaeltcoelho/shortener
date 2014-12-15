@@ -163,11 +163,11 @@ class RedirectTest(TestCase):
 
     def test_redirect_success(self):
         """
-        Should return status code 301
+        Should return status code 302
         """
         resp = client.get(r('core:redirect', args=[1, ]))
 
-        self.assertEqual(301, resp.status_code)
+        self.assertEqual(302, resp.status_code)
 
     def test_redirect_404(self):
         """
