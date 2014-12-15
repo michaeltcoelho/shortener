@@ -13,7 +13,7 @@ An url shortener built with Python 2.7.6 and Django 1.7.
 
 If you are using a Mac OSX you can install all dependencies by HomeBrew.
 
-###Considering you already have created and enabled your virtualenv:
+####Considering you already have created and enabled your virtualenv:
 
 ### Install Shortener
 
