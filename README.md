@@ -29,7 +29,7 @@ To install NodeJS run:
 
 ### Install Shortener
 
-Unzip the shortener-michaeltcoelho-15-12-2014.zip file:
+Unzip the **shortener-michaeltcoelho-15-12-2014.zip** file:
 
 By command line, go to `/shortener` directory and run the following command:
 
