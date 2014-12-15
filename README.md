@@ -9,11 +9,11 @@ An url shortener built with Python 2.7.6 and Django 1.7.
 
 ### Install Dependencies
 
-Considering you already have created and enabled your virtualenv.
-
 `$ sudo nodejs nodejs-dev npm`
 
 If you are using a Mac OSX you can install all dependencies by HomeBrew.
+
+###Considering you already have created and enabled your virtualenv:
 
 ### Install Shortener
 
@@ -30,7 +30,5 @@ Clone the repository and install it
 `$ make test`
 
 ### Run
-
-Seeing you have installed all dependencies and the shortener
 
 `$ make run`
