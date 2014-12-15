@@ -4,31 +4,45 @@ An url shortener built with Python 2.7.6 and Django 1.7.
 
 ### Requirements
 
-* An activated virtualenv
-* NodeJS
+* An activated python virtualenv.
+* NodeJS.
 
 ### Install Dependencies
 
-`$ sudo nodejs nodejs-dev npm`
+If you are using Linux:
 
-If you are using a Mac OSX you can install all dependencies by HomeBrew.
+You can find a tutorial about how to setup a python virtualenv on linux [here](https://wiki.archlinux.org/index.php/Python_VirtualEnv).
 
-####Considering you already have created and activated your virtualenv:
+To install NodeJS run:
+
+`sudo apt-get install nodejs npm`
+
+If you are using a Mac OSX, you can install the dependencies by [HomeBrew](http://brew.sh/):
+
+You can find a tutorial about how to setup a python virtualenv on Mac OSX [here](http://jamie.curle.io/blog/installing-pip-virtualenv-and-virtualenvwrapper-on-os-x/)
+
+To install NodeJS run:
+
+`brew install node`
+
+####Considering you already have installed the dependencies, created and activated your virtualenv:
 
 ### Install Shortener
 
-Clone the repository and install it
+Unzip the shortener-michaeltcoelho-15-12-2014.zip file:
 
-`$ git clone https://github.com/michaeltcoelho/shortener.git`
+By command line, go to `/shortener` directory and run the following command:
 
-`$ cd shortener`
-
-`$ make install`
+`make install`
 
 ### Test
 
-`$ make test`
+Running tests:
+
+`make test`
 
 ### Run
 
-`$ make run`
+Running the application:
+
+`make run`
