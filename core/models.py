@@ -34,13 +34,9 @@ class Link(models.Model):
     """
     Link is the user link to shorten it
     """
-    user      = models.ManyToManyField(User, blank=True, null=True, default=None)
-    url       = models.URLField(_('url'), max_length=255)
+    url       = models.URLField(_('url'), max_length=255, db_index=True)
+    users     = models.ManyToManyField(User, through="UserLink")
     submitted = models.DateTimeField(_('data'), auto_now_add=True)
-    visits    = models.PositiveIntegerField(_('visitas'), default=0, db_index=True)
-
-    class Meta:
-        ordering = ['-visits']
 
     def __unicode__(self):
         return '%s - %s' % (self.url, self.to_base62(), )
@@ -54,10 +50,10 @@ class Link(models.Model):
     def get_shortened_url(self):
         return '{0}{1}'.format(settings.BASE_URL, self.to_base62())
 
-    def to_json(self):
-        return {
-            'url'  : self.url,
-            'submitted' : self.submitted.strftime('%d/%m/%Y %H:%m'),
-            'visits' : self.visits,
-            'shortened_url' : self.get_shortened_url()
-        }
+class UserLink(models.Model):
+    """
+    LinkUser -
+    """
+    user      = models.ForeignKey(User)
+    link      = models.ForeignKey(Link)
+    visits    = models.PositiveIntegerField(_('visitas'), default=0)

@@ -40,19 +40,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for link in links %}
+                        {% for user_link in user_links %}
                             <tr>
                                 <td class="text-left" data-url="{{link.url}}">
-                                    <a href="{{ link.url }}" class="link" target="_blank">{{link.url}}</a>
+                                    <a href="{{ user_link.link.url }}" class="link" target="_blank">{{user_link.link.url}}</a>
                                 </td>
                                 <td class="text-left">
-                                    <a href="{{ link.get_absolute_url }}" target="_blank" class="link">{{link.get_shortened_url}}</a>
+                                    <a href="{{ user_link.link.get_absolute_url }}" target="_blank" class="link">{{user_link.link.get_shortened_url}}</a>
                                 </td>
                                 <td class="text-align">
-                                    {{link.submitted | date:'d/m/Y H:i'}}
+                                    {{user_link.link.submitted | date:'d/m/Y H:i'}}
                                 </td>
                                 <td class="text-center">
-                                    {{link.visits}}
+                                    {{user_link.visits}}
                                 </td>
                             </tr>
                         {% endfor %}

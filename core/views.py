@@ -1,33 +1,37 @@
 #encoding:utf-8
 from django.shortcuts import render
 from django.conf import settings
-from django.http import (HttpResponseRedirect, HttpResponse,
-                         Http404, HttpResponsePermanentRedirect)
+from django.http import (HttpResponseRedirect, HttpResponse, Http404)
+from django.db.models import F
 from django.core.urlresolvers import reverse as r
 from django.contrib import auth
 
 from .forms import UserCreationForm, AuthenticationForm, LinkForm
-from .models import User, Link
+from .models import User, Link, UserLink
 
 from .converter import base62
 
 import json
+
 
 def home(request):
     """
     home - app home
     """
     if request.user.is_authenticated():
-        links = Link.objects.filter(user=request.user)
+        user_links = UserLink.objects.filter(user=request.user) \
+                                .select_related() \
+                                .order_by('-visits')
     else:
-        links = None
+        user_links = None
 
     context = {
-        'links' : links,
+        'user_links' : user_links,
         'base_url' : settings.BASE_URL
     }
 
     return render(request, 'index.html', context)
+
 
 def login(request,
           login_form=AuthenticationForm,
@@ -50,6 +54,7 @@ def login(request,
 
     return render(request, template, { 'form' : login_form() })
 
+
 def logout(request):
     """
     logout - logout user from app
@@ -57,6 +62,7 @@ def logout(request):
     auth.logout(request)
 
     return HttpResponseRedirect(r('core:home'))
+
 
 def signup(request,
            signup_form=UserCreationForm,
@@ -87,58 +93,56 @@ def signup(request,
 
 
 def shorten(request,
-          link_form=LinkForm):
+            link_form=LinkForm):
     """
-    short - an ajax view to shorten an url
+    shorten - an ajax view to shorten an url
     """
     if request.is_ajax():
-
-        data = request.GET
-        form = link_form(data)
-
+        form = link_form(request.GET)
         user = request.user if request.user.is_authenticated() else None
+        context = {}
 
         if form.is_valid():
 
-            try:
-                link = Link.objects.get(url=form.cleaned_data.get('url'))
+            link, created = Link.objects.get_or_create(url=form.cleaned_data.get('url'))
 
-                if user is not None and link.user is not user:
-                    link.user.add(user)
-                    link.save()
+            if user:
+                user_link, ul_created = UserLink.objects.get_or_create(user=user, link=link)
+                context.update({
+                    'visits' : user_link.visits,
+                    'created' : ul_created
+                })
 
-            except Link.DoesNotExist:
-                link = Link.objects.create(url=form.cleaned_data.get('url'))
+            context.update({
+                'url'  : link.url,
+                'submitted' : link.submitted.strftime('%d/%m/%Y %H:%m'),
+                'shortened_url' : link.get_shortened_url()
+            })
 
-                if user:
-                    link.user.add(user)
-                    link.save()
+            return HttpResponse(json.dumps(context), content_type='application/json')
 
-            return HttpResponse(
-                json.dumps(link.to_json()),
-                content_type='application/json'
-            )
+        return HttpResponse(json.dumps({ 'error' : form.errors }), content_type='application/json')
 
-        return HttpResponse(
-            json.dumps({ 'error' : form.errors }),
-            content_type='application/json'
-        )
 
-def redirect(request, id):
+def redirect(request, uid):
     """
     redirect - redirect the user permanently to the original link
     """
-    id = base62.to_decimal(id)
+    uid = base62.to_decimal(uid)
 
     try:
-        link = Link.objects.get(id=id)
+        link = Link.objects.get(id=uid)
+
+        if request.user.is_authenticated():
+            user_link = UserLink.objects.get(user=request.user, link=link)
+            user_link.visits = F('visits') + 1
+            user_link.save()
+
     except Link.DoesNotExist:
         raise Http404()
 
-    link.visits += 1
-    link.save()
+    return HttpResponseRedirect(link.url)
 
-    return HttpResponsePermanentRedirect(link.url)
 
 def error404(request):
     """

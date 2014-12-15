@@ -142,7 +142,7 @@ a {
       float: left;
       width: 100%;
       padding: 1em;
-      color: #fff;
+      color: #2969B0;
       text-align: center;
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
@@ -150,7 +150,7 @@ a {
       #shortened > #url-shortened > .url span {
         display: block; }
       #shortened > #url-shortened > .url a {
-        color: #fff;
+        color: #2969B0;
         font-weight: bold;
         font-size: 1.2em; }
 

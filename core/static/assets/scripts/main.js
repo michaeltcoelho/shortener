@@ -27,15 +27,17 @@ var shortener = {
                     'url' :  url
                   }, function(data) {
 
-                    if (data.error) {
-                        toastr.error(data.error.url, 'Informação incorreta...');
-                    }
-                    else {
-                        shortener.el.content.html(shortener.html(data));
+                  shortener.el.input.val("");
 
-                        if(shortener.el.table.find('td[data-url="' + data.url + '"]').length == 0)
-                            shortener.el.table.append(shortener.row(data));
-                    }
+                  if (data.error) {
+                    toastr.error(data.error.url, 'Algo deu errado! :(');
+                  }
+                  else {
+                    shortener.el.content.html(shortener.html(data));
+
+                    if(data.created == true)
+                        shortener.el.table.append(shortener.row(data));
+                  }
                 }
             );
         }
@@ -49,7 +51,7 @@ var shortener = {
         '<div id="url-shortened">' +
             '<div class="url">' +
                 '<span>Copie sua url encurtada: </span>' +
-                '<a href="' + d.shortened_url + '">' + d.shortened_url + '</a>' +
+                '<a target="_blank" href="' + d.shortened_url + '">' + d.shortened_url + '</a>' +
             '</div>' +
         '</div>');
     },

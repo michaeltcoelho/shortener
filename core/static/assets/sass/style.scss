@@ -198,7 +198,7 @@ a {
             float: left;
             width: 100%;
             padding: 1em;
-            color: #fff;
+            color: $dark-blue;
             text-align: center;
             @include radius(4px);
 
@@ -207,7 +207,7 @@ a {
             }
 
             a {
-               color: #fff;
+               color: $dark-blue;
                font: {
                   weight: bold;
                   size: 1.2em;

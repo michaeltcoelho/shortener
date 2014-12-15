@@ -1,7 +1,7 @@
 #encoding:utf-8
 from django.test import TestCase
 from django.db import IntegrityError
-from core.models import User, Link
+from core.models import User, Link, UserLink
 
 class UserModelTest(TestCase):
 
@@ -61,24 +61,31 @@ class LinkModelTest(TestCase):
     LinkModelTest
     """
     def setUp(self):
-        self.user = User.objects.create_user(name='michael', email='michael.tcoelho@gmail.com', password='123')
-        self.link = Link.objects.create(url='www.google.com')
+        self.user     = User.objects.create_user(name='michael', email='michael.tcoelho@gmail.com', password='123')
+        self.link     = Link.objects.create(url='www.google.com')
 
     def test_link_creation(self):
-        """
-        link creation to an user
-        """
-        self.link.user.add(self.user)
-        self.link.save()
-
-        u = '%s - %s' % (self.link.url, self.link.to_base62())
-
-        self.assertEqual(1, self.link.pk)
-        self.assertEqual(self.link.__unicode__(), u)
-
-    def test_link_creation_user_anonymous(self):
         """
         link creation to an anonymous user
         """
         self.link.save()
+
         self.assertEqual(1, self.link.pk)
+        self.assertEqual(self.link.__unicode__(), '%s - %s' % (self.link.url, self.link.to_base62()))
+
+class UserLinkModelTest(TestCase):
+    """
+    UserLinkModelTest
+    """
+    def setUp(self):
+        self.user = User.objects.create_user(name='michael', email='michael.tcoelho@gmail.com', password='123')
+        self.link = Link.objects.create(url='www.google.com')
+
+    def test_user_link_creation(self):
+        """
+        Should create a new user link
+        """
+        userlink = UserLink(user=self.user, link=self.link)
+        userlink.save()
+
+        self.assertEqual(1, userlink.pk)
