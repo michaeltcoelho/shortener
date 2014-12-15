@@ -14,24 +14,24 @@ class ConverterTest(unittest.TestCase):
 
     def test_binary_converter(self):
         """
-        Test base 10 to Binary base
+        Test Decimal to Binary
         """
         self._test_converter(converter.baseBin)
 
     def test_octal_converter(self):
         """
-        Test base 10 to Octal base
+        Test Decimal to Octal
         """
         self._test_converter(converter.baseOct)
 
     def test_hexadecimal_converter(self):
         """
-        Test base 10 to Hexadecimal base
+        Test Decimal to Hexadecimal
         """
         self._test_converter(converter.baseHex)
 
     def test_62_converter(self):
         """
-        Test base 10 to base 64
+        Test Decimal to base64
         """
         self._test_converter(converter.base62)
