@@ -29,9 +29,15 @@ To install NodeJS run:
 
 ### Install Shortener
 
-Unzip the **shortener-michaeltcoelho-15-12-2014.zip** file:
+Clone the repository and install it:
 
-By command line, go to `/shortener` directory and run the following command:
+`$ git clone https://github.com/michaeltcoelho/shortener.git`
+
+Go to `/shortener` directory:
+
+`cd shortener`
+
+Run the following command:
 
 `make install`
 
