@@ -6,10 +6,6 @@ __all__ = [ 'baseBin', 'baseOct', 'baseHex', 'base62' ]
 class Converter(object):
     """
     Converter - Convert from base 10 integer number to base x string back again.
-
-    OBS: This tiny library doesn't work with negative number yet.
-         I intend to implement more features like 2`s and 1`s complement.
-         Thanks!
     """
     def __init__(self, digits):
         self.digits = digits
